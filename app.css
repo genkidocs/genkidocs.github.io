@@ -1,0 +1,24 @@
+html,body{
+    margin:0;
+    height: 100%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222222;
+    color: rgba(255,255,255,.8);
+}
+
+a{
+    color:#8DC641;
+}
+
+a.genki_link{
+    color:#D291FF;
+}
+
+
+#msg{
+    margin-left:20px;
+}
