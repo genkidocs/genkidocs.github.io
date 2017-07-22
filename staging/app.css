@@ -24,6 +24,7 @@ body{
     width: 100%;
     background-color:#282729; 
     position: fixed;
+    z-index: 1;
 }
 
 #app-body{
@@ -40,55 +41,59 @@ body{
 }
 
 .tree .branch{
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 50%;
+    padding-bottom: 50%;
     min-width: 500px;
     max-width: 500px;
     height: 100%;
     margin-right: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border: 1px solid rgba(255,255,255,.1);
-    overflow-y: auto;
+    bottom: 0;
+    position: absolute;  
+    overflow-y: auto;  
 }
 
-.tree .branch .leaf{
-    min-height: 90px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+.branch::-webkit-scrollbar {
+    width: 0em;
 }
 
-.tree .branch .leaf .view_box{
-    padding: 20px;
-    height: 100%;
-    background-color: rgba(252, 252, 252, 1);
-    width: 100%;
+.card:first-of-type{
+    margin-top: 50%;
 }
 
-.card.active .view{
+.card{
+    background-color: rgba(252,252,252,1);
+    padding: 20px
+}
+
+.card .view{
     border: none;
-    border-left: 4px solid rgba(75, 50, 102, 1);
     width: 100%;
     padding: 10px;
     height: 100%;
 }
 
-.card.active .view img{
+.card.active .view{
+    border-left: 4px solid rgba(75, 50, 102, 1);
+}
+
+
+.card .view img{
     max-width: 100%;
 }
 
 .card.active .edit{  
     border: 2px solid rgba(75, 50, 102, 1);
-    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     min-height: 100px;
     padding: 10px;
     border-radius: 5px;
     outline: none;
     resize: none;
+    background-color: rgba(0,0,0,0);
 }
 
 .sys_hide{
