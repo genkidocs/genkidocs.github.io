@@ -1,8 +1,19 @@
 (function(window){
     var sys_state = "view";
-    var md = window.markdownit();
+    var md = window.markdownit({
+        highlight: function (str, lang) {
+            if (lang && hljs.getLanguage(lang)) {
+            try {
+                return '<pre class="hljs"><code>' +
+                    hljs.highlight(lang, str, true).value +
+                    '</code></pre>';
+            } catch (__) {}
+            }
+            return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+        }
+    });
     var resizeTextarea = function(e) {
-        $(e).css({'height':'auto','overflow-y':'hidden'}).height(e.scrollHeight);
+        $(e).css({'height':'auto','overflow':'hidden'}).height(e.scrollHeight);
     }    
     var hideEls = function(els){
         els.map(function(el){
