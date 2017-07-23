@@ -1,0 +1,150 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html,body{
+    margin:0;
+    height: 100%;
+}
+
+body{
+    background-color: #1A191B;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-y:hidden;
+}
+
+#app-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255,255,255,1);
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 50px;
+    width: 100%;
+    background-color:#282729; 
+    position: fixed;
+    z-index: 1;
+}
+
+#app-body{
+    height: 100%;
+}
+
+
+.tree{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.tree .tree_padding{
+    max-width: 50px;
+    min-width: 50px;
+    height: 100%;
+}
+
+.tree .branch .branch_padding{
+    width: 100%;
+    min-height: 500px;
+    max-height: 500px;
+}
+
+.tree .branch{
+    min-width: 500px;
+    max-width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255,255,255,.1);
+    bottom: 0;
+    overflow-y: auto;  
+    margin-top: 49px;    
+}
+
+.branch::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 0em;
+}
+
+.card:first-of-type{
+    margin-top: 50%;
+}
+
+.card{
+    background-color: rgba(252,252,252,1);
+    padding: 20px
+}
+
+.card .view{
+    border: none;
+    width: 100%;
+    padding-left: 32px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100%;
+}
+
+.card code{
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    white-space: nowrap;
+    background-color: #f9f2f4;    
+}
+
+.card.active .view{
+    border-left: 4px solid rgba(75, 50, 102, 1);
+}
+
+
+.card .view img{
+    max-width: 100%;
+}
+
+.card.active .edit{  
+    border: 2px solid rgba(75, 50, 102, 1);
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+    background-color: rgba(0,0,0,0);
+}
+
+.sys_hide{
+    display: none;
+}
+
+.card h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.card h2{   
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+.card p {
+    padding: 0 0 10px;
+    margin: 0;
+}
+
+.card ul {
+    padding: 0 0 10px 15px;
+    list-style-type: disc;
+}
+
+.card ul,
+.card ol{
+    margin:0;
+}

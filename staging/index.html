@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" integrity="sha256-akwTLZec/XAFvgYgVH1T5/369lhA2Efr22xzCNl1nHs=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="app.css">
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-103053072-1', 'auto');
+            ga('send', 'pageview');
+        </script>        
+    </head>
+    <body>
+        <div id="app-header">
+            <div class="letterhead">
+                genki docs
+            </div>
+            <div class="tree_picker"></div>
+            <div></div>
+        </div>
+        <div id="app-body">
+            <div class="tree">
+                <div class="tree_padding"></div>
+                <div class="branch">
+                    <div class="branch_padding"></div>
+                        <div class="card active">
+                                <div class="view">
+                                </div>
+                                <textarea class="edit sys_hide">
+                                </textarea>                            
+                        </div>
+                    <div class="branch_padding"></div>
+                </div>
+                <div class="tree_padding"></div>
+            </div>
+        </div>
+        <div id="helpers" class="sys_hide">
+            <input type="file" id="files" name="files[]" multiple />
+        </div>
+        <script id="card_template" type="text/x-handlebars-template">
+                <div class="card" data-parent="{{parent}}" id="{{id}}">
+                        <div class="view">
+                        </div>
+                        <textarea class="edit sys_hide">
+                        </textarea>
+                </div>            
+        </script> 
+        <script id="branch_template" type="text/x-handlebars-template">
+                <div class="branch">
+                    <div class="branch_padding"></div>
+                    <div class="branch_padding"></div>
+                </div>           
+        </script>                    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.1/mousetrap.min.js" integrity="sha256-z6XYkzzC5o+5PhoIPMpyq5FOZkWFGiWa0NFIDPJ57zU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.1/plugins/global-bind/mousetrap-global-bind.min.js" integrity="sha256-9nbLbhyVhsFCvtD9VUqA/Sxk+0Io1A50/kpyJflDW5w=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.3.1/markdown-it.min.js" integrity="sha256-3WZyZQOe+ql3pLo90lrkRtALrlniGdnf//gRpW0UQks=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js" integrity="sha256-h7PiJxtxsf7+VkAGN6N+8/0qZrhK7oYJc/pguDnYJi4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" integrity="sha256-0JaDbGZRXlzkFbV8Xi8ZhH/zZ6QQM0Y3dCkYZ7JYq34=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" integrity="sha256-1hjUhpc44NwiNg8OwMu2QzJXhD8kcj+sJA3aCQZoUjg=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" integrity="sha256-FPJJt8nA+xL4RU6/gsriA8p8xAeLGatoyTjldvQKGdE=" crossorigin="anonymous"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
