@@ -17,30 +17,46 @@
         </script>        
     </head>
     <body>
-        <div id="app-header"></div>
+        <div id="app-header">
+            <div class="letterhead">
+                genki docs
+            </div>
+            <div class="tree_picker"></div>
+            <div></div>
+        </div>
         <div id="app-body">
             <div class="tree">
+                <div class="tree_padding"></div>
                 <div class="branch">
+                    <div class="branch_padding"></div>
                         <div class="card active">
                                 <div class="view">
                                 </div>
                                 <textarea class="edit sys_hide">
                                 </textarea>                            
                         </div>
+                    <div class="branch_padding"></div>
                 </div>
+                <div class="tree_padding"></div>
             </div>
         </div>
         <div id="helpers" class="sys_hide">
             <input type="file" id="files" name="files[]" multiple />
         </div>
         <script id="card_template" type="text/x-handlebars-template">
-                <div class="card" id="{{id}}">
+                <div class="card" data-parent="{{parent}}" id="{{id}}">
                         <div class="view">
                         </div>
                         <textarea class="edit sys_hide">
                         </textarea>
                 </div>            
-        </script>        
+        </script> 
+        <script id="branch_template" type="text/x-handlebars-template">
+                <div class="branch">
+                    <div class="branch_padding"></div>
+                    <div class="branch_padding"></div>
+                </div>           
+        </script>                    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.1/mousetrap.min.js" integrity="sha256-z6XYkzzC5o+5PhoIPMpyq5FOZkWFGiWa0NFIDPJ57zU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.1/plugins/global-bind/mousetrap-global-bind.min.js" integrity="sha256-9nbLbhyVhsFCvtD9VUqA/Sxk+0Io1A50/kpyJflDW5w=" crossorigin="anonymous"></script>

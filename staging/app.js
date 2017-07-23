@@ -1,7 +1,9 @@
 (function(window){
     var sys_state = "view";
     var card_template;
+    var branch_template;
     var md = window.markdownit({
+        html:true,
         highlight: function (str, lang) {
             if (lang && hljs.getLanguage(lang)) {
             try {
@@ -45,16 +47,19 @@
         $(".card.active .edit").focus();
         sys_state = "edit";        
     }   
+    var setAppBody = function(trees){
+            $("#app-body").html(trees);
+            $("textarea").each(function(){
+                var val = $(this).attr("value");
+                $(this).val(val);
+            })
+    };
     var handleFileLoad = function(evt) {
         var file = evt.target.files[0]; // FileList object    
         var reader = new FileReader();
         reader.onload = function(e){
             var treeHtml = e.target.result;
-            $("#app-body").html(treeHtml);
-            $("textarea").each(function(){
-                var val = $(this).attr("value");
-                $(this).val(val);
-            })
+            setAppBody(treeHtml);
         }
         reader.readAsText(file);
     }      
@@ -68,9 +73,11 @@
 
         //Add card above
         Mousetrap.bindGlobal(['command+up','ctrl+up'],function(e){            
-            var id = uuid();
+            var id = uuid();            
+            var parentId = $(".card.active").attr("data-parent");
             var cardHtml = card_template({
-                id:id
+                id:id,
+                parent:parentId
             });             
             switch(sys_state){
                 case "edit":
@@ -123,32 +130,37 @@
             var card = $(".card.active");
             var card_above = $(card).prev(".card");
             var card_below = $(card).next(".card");
+            var parentId = $(card).attr("data-parent");
+            var branch = $(card).parents(".branch");
+            var cardsInBranch = $(branch).find(".card").length;            
+            var card_to_select;
+            switch(sys_state){
+                case "edit":
+                    switchToView();
+                break;
+            }
+
             if(card_above.length > 0){
-                switch(sys_state){
-                    case "edit":
-                        switchToView();
-                    break;
-                }
-                $(card).removeClass("active");
-                $(card_above).addClass("active");                
+                card_to_select = card_above;
             }else if(card_below.length > 0){
-                switch(sys_state){
-                    case "edit":
-                        switchToView();
-                    break;
-                }
-                $(card).removeClass("active");
-                $(card_below).addClass("active");
+                card_to_select = card_below;
+            }else if(cardsInBranch == 1){
+                var parent_card = $("#"+parentId);
+                card_to_select = parent_card;
+                card = branch;
             }                       
             $(card).remove();
+            $(card_to_select).addClass("active");
             return false;
         })
         
         //Add card below
         Mousetrap.bindGlobal(['command+down','ctrl+down'],function(e){
             var id = uuid();
+            var parentId = $(".card.active").attr("data-parent");
             var cardHtml = card_template({
-                id:id
+                id:id,
+                parent:parentId
             });             
             switch(sys_state){
                 case "edit":
@@ -159,6 +171,49 @@
             $(".card.active").removeClass("active");
             $("#"+id).addClass("active");
             switchToEdit();
+            return false;
+        })
+
+        //Add card to the right
+        Mousetrap.bindGlobal(['command+right','ctrl+right'],function(e){          
+            switch(sys_state){
+                case "edit":
+                    switchToView();
+                break;
+            }
+            var card = $(".card.active");
+            var parentId = $(card).attr("id");
+            if(!parentId){
+                parentId = uuid();
+                $(card).attr("id",parentId);
+            }    
+            var id = uuid();
+            var cardHtml = card_template({
+                id:id,
+                parent:parentId
+            });               
+            var parentBranch = $(card).parents(".branch");        
+            var branchRight = $(parentBranch).next(".branch");            
+            var cardNew = $(cardHtml);
+            if(branchRight.length == 0){
+                var branchHtml = branch_template();
+                var branchNew = $(branchHtml);                
+                $(branchNew).find(".branch_padding").first().after(cardNew);
+                $(parentBranch).after(branchNew);
+                $(card).removeClass("active");
+                $(cardNew).addClass("active");
+                switchToEdit();
+            }else{
+                var lastCard = $(branchRight).find(".card[data-parent='"+parentId+"']").last();
+                if(lastCard.length > 0){
+                    $(lastCard).after(cardNew);
+                }else{
+                    $(branchRight).find(".branch_padding").last().before(cardNew);
+                }
+                $(card).removeClass("active");
+                $(cardNew).addClass("active");
+                switchToEdit();
+            }
             return false;
         })
 
@@ -174,6 +229,38 @@
                 $(".card.active").removeClass("active");
                 $(card_below).addClass("active");
             }                        
+            return false;
+        })
+
+        //Select card to the right
+        Mousetrap.bind(['right'],function(e){
+            var activeCard = $(".card.active"); 
+            var parentID = $(activeCard).attr("id")
+            var branch = $(activeCard).parents(".branch").next(".branch");
+            if(branch.length > 0){
+                var firstCard = $(branch).find(".card").first(); 
+                var card = $(branch).find(".card[data-parent='"+parentID+"']").first();
+                if(card.length > 0){
+                    $(activeCard).removeClass("active");
+                    $(card).addClass("active");
+                }else if(firstCard.length > 0){
+                    $(activeCard).removeClass("active");
+                    $(firstCard).addClass("active");                    
+                }
+            }                      
+            return false;
+        })
+
+        //Select card to the left
+        Mousetrap.bind(['left'],function(e){
+            var activeCard = $(".card.active"); 
+            var parentID = $(activeCard).attr("data-parent")
+            var branch = $(activeCard).parents(".branch").next(".branch");
+            if(parentID){
+                var card = $("#"+parentID);
+                $(activeCard).removeClass("active");
+                $(card).addClass("active");
+            }                      
             return false;
         })
         
@@ -220,21 +307,25 @@
             return false;
         });        
     }
-    var resizeBranches = function(){
-        var branchHeight = $("body").outerHeight() - $("#app-header").outerHeight();        
-        $(".branch").css("min-height",branchHeight);
-        $(".branch").css("max-height",branchHeight);
-    }
-    var registerResizeHandlers = function(){
-        resizeBranches();
+    var loadHelp = function(){
+        $.ajax({
+            url: "sampledocs/genki_help.genkidoc",
+        })
+        .done(function( help ) {
+            setAppBody(help);
+        });        
     }
     var boot = function(){
         if(!card_template){
             var source   = $("#card_template").html();
             card_template = Handlebars.compile(source);
         }        
-        registerResizeHandlers();
+        if(!branch_template){
+            var source   = $("#branch_template").html();
+            branch_template = Handlebars.compile(source);
+        }                        
         registerHandlers();
+        loadHelp();
     }
 
     $(document).ready(function(){
