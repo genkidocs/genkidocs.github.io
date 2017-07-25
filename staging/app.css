@@ -92,7 +92,7 @@ body::-webkit-scrollbar {
     height: 100%;
 }
 
-.card code{
+.card h1 code{
     padding: 2px 4px;
     font-size: 90%;
     color: #c7254e;
