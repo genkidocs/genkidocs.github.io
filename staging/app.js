@@ -131,7 +131,7 @@
         })
 
         //Delete card
-        Mousetrap.bindGlobal(['del'],function(e){
+        Mousetrap.bind(['del'],function(e){
             var cards = $(".card").length;            
             if(cards == 1){
                 return false;
