@@ -71,6 +71,15 @@
 
         $("#files").on("change",handleFileLoad);
 
+        $('body').on("click",".card",function(){
+            switch(sys_state){
+                case "edit":
+                    return;
+            }  
+            $(".card.active").removeClass("active"); 
+            $(this).addClass("active");
+        })
+
         //Add card above
         Mousetrap.bindGlobal(['command+up','ctrl+up'],function(e){            
             var id = uuid();            
