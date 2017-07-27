@@ -18,6 +18,7 @@ body{
     background-color: #1A191B;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-y:hidden;
+    color: #bbb;
 }
 
 #app-header{
@@ -79,7 +80,6 @@ body::-webkit-scrollbar {
 }
 
 .card{
-    background-color: rgba(252,252,252,1);
     padding: 20px
 }
 
@@ -92,16 +92,20 @@ body::-webkit-scrollbar {
     height: 100%;
 }
 
-.card h1 code{
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    white-space: nowrap;
-    background-color: #f9f2f4;    
+.card a{
+    color: #8CA8C8;
+}
+
+.card h1 > code,
+.card p > code{
+    background: rgba(255,255,255,.1);
+    border:1px solid rgba(0,0,0,.35); 
+    padding: .2rem .3rem .1rem;
+    border-radius: 3px;
 }
 
 .card.active .view{
-    border-left: 4px solid rgba(75, 50, 102, 1);
+    border-top: 4px solid rgba(75, 50, 102, 1);
 }
 
 
@@ -119,6 +123,7 @@ body::-webkit-scrollbar {
     outline: none;
     resize: none;
     background-color: rgba(0,0,0,0);
+    color: #bbb;
 }
 
 .sys_hide{
