@@ -135,8 +135,27 @@
             txtarea.focus();
             txtarea.scrollTop = scrollPos;
         }
+        var insertBeforeSelection = function(txtarea, text){            
+            var scrollPos = txtarea.scrollTop;
+            var caretPos = txtarea.selectionStart;
+            var front = (txtarea.value).substring(0, caretPos);
+            var back = (txtarea.value).substring(caretPos, txtarea.value.length);
+            txtarea.value = front + text + back;
+            txtarea.focus();
+            txtarea.scrollTop = scrollPos;
+        }
+        var insertAfterSelection = function(txtarea, text){            
+            var scrollPos = txtarea.scrollTop;            
+            var caretPos = txtarea.selectionEnd;
+            var front = (txtarea.value).substring(0, caretPos);
+            var back = (txtarea.value).substring(caretPos, txtarea.value.length);
+            txtarea.value = front + text + back;
+            txtarea.focus();
+            txtarea.scrollTop = scrollPos;
+        }
 
-    var MoveCaret = function(txtarea, offset){            
+    var MoveCaret = function(txtarea, offset){    
+            console.log("Move caret : " + offset);        
             var scrollPos = txtarea.scrollTop;
             var caretPos = txtarea.selectionStart;
             caretPos = caretPos + offset;
@@ -444,6 +463,19 @@
                     var textArea = $(".card.active .edit")[0];
                     insertAtCaret(textArea,"![]()");
                     MoveCaret(textArea,-1);
+                return false;                
+            }            
+        });
+        Mousetrap.bindGlobal(['alt+l'], function(e) {                        
+            switch(sys_state){
+                case "edit":
+                    var textArea = $(".card.active .edit")[0];
+                    var selectionLength = textArea.selectionEnd - textArea.selectionStart;
+                    console.log("Selection Length : " + selectionLength);
+                    var offset = selectionLength + 4 + 3;
+                    insertBeforeSelection(textArea,"<a target=\"_blank\" href=\"\" >");
+                    insertAfterSelection(textArea,"</a>");
+                    MoveCaret(textArea,-offset);
                 return false;                
             }            
         });  
