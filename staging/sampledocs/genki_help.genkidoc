@@ -3,7 +3,7 @@
                 <div class="tree_padding"></div>
                 <div class="branch">
                     <div class="branch_padding"></div>
-                        <div class="card" id="6645c60f-12a6-4a7a-9f85-170fa0be8272">
+                        <div class="card active highlight" id="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="" data-parent="">
                                 <div class="view"><h1>Welcome to this sample genki doc</h1>
 <h3>(which also dabs as a tutorial)</h3>
 <p>A genki doc is a collection of cards written using markdown arranged in a tree like structure.. you can see it here</p></div>
@@ -15,7 +15,7 @@ A genki doc is a collection of cards written using markdown arranged in a tree l
                         </div>
                     <div class="branch_padding"></div>
                 </div><div class="branch">
-                    <div class="branch_padding"></div><div class="card" data-parent="6645c60f-12a6-4a7a-9f85-170fa0be8272" id="0f6cb058-4f86-4694-b91b-f6150acb8f9a">
+                    <div class="branch_padding"></div><div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="c277ed60-2046-407b-9acb-c46084adb11a">
                         <div class="view"><h1>What can I use Genki for?</h1>
 <ul>
 <li>Writing:
@@ -47,9 +47,9 @@ A genki doc is a collection of cards written using markdown arranged in a tree l
   - personal todos.
   - your development workflow.
   - your ideas.
-  - your study notes.                        " style="height: 224px; overflow: hidden;">                        </textarea>
+  - your study notes.                                                " style="height: 224px; overflow: hidden;">                        </textarea>
                 </div>
-                <div class="card active" data-parent="6645c60f-12a6-4a7a-9f85-170fa0be8272" id="baaf6209-5069-493e-bc51-72e10c72ab9c">
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="5c7af96c-2758-4de0-b5c6-fe1bc76c5926">
                         <div class="view"><h1>How do I use Genki?</h1>
 <p>The basics:</p>
 <ul>
@@ -62,12 +62,12 @@ A genki doc is a collection of cards written using markdown arranged in a tree l
 The basics:
 - Ctrl+Enter to edit and save a card.
 - Arrows to move around
-- Del to delete                        " style="height: 134px; overflow: hidden;">                        </textarea>
+- Del to delete                                                " style="height: 134px; overflow: hidden;">                        </textarea>
                 </div>            
         
                     <div class="branch_padding"></div>
                 </div><div class="branch">
-                    <div class="branch_padding"></div><div class="card" data-parent="baaf6209-5069-493e-bc51-72e10c72ab9c" id="c56d8ed7-1f76-4bb9-b8b0-987821bfb8a2">
+                    <div class="branch_padding"></div><div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="c4f4fb80-4f10-4395-b50f-57d46d4464aa">
                         <div class="view"><h1>Step <code>1</code>: Ctrl+Enter to Edit.</h1>
 <p>Each card should contain a single thought or topic. Usually no more than a paragraph or two.</p>
 <p><code>Try editing this card!</code></p>
@@ -77,27 +77,27 @@ Each card should contain a single thought or topic. Usually no more than a parag
 
 `Try editing this card!`
 
-(Ctrl+Enter again to save.)                        " style="height: 149px; overflow: hidden;">                        </textarea>
+(Ctrl+Enter again to save.)                                                " style="height: 149px; overflow: hidden;">                        </textarea>
                 </div>
-                <div class="card" data-parent="baaf6209-5069-493e-bc51-72e10c72ab9c" id="322c98d8-2582-45e0-8eae-2eb756c3d7f8">
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="5b4df4f8-98a4-41e8-bcdf-7319853ace8e">
                         <div class="view"><h1>Step <code>2</code>: Arrows to Move</h1>
 <p>Move around with arrow keys, or by clicking the card you want to focus on.</p></div>
                         <textarea class="edit sys_hide" value="# Step `2`: Arrows to Move
-Move around with arrow keys, or by clicking the card you want to focus on.                         " style="height: 120px; overflow: hidden;">                        </textarea>
+Move around with arrow keys, or by clicking the card you want to focus on.                                                 " style="height: 120px; overflow: hidden;">                        </textarea>
                 </div>
-                <div class="card" data-parent="baaf6209-5069-493e-bc51-72e10c72ab9c" id="c5bf71f3-5275-41ce-9cd8-885010db02d2">
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="8bd260b7-267b-471b-a13c-ad3b5e352b24">
                         <div class="view"><h1>Step <code>3</code>: Del to Delete</h1>
 <p>Try deleting the card to the right.</p></div>
                         <textarea class="edit sys_hide" value="# Step `3`: Del to Delete
-Try deleting the card to the right.                        " style="height: 120px; overflow: hidden;">                        </textarea>
+Try deleting the card to the right.                                                " style="height: 120px; overflow: hidden;">                        </textarea>
                 </div>
-                <div class="card" data-parent="baaf6209-5069-493e-bc51-72e10c72ab9c" id="7810d663-eae9-4ab0-aa08-32486e857d64">
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="ab21e583-45c9-418e-a93e-bfd703791b80">
                         <div class="view"><h1>Step <code>4</code>: Ctrl+S to Save the current tree to disc</h1>
 <p>Try saving this tree</p></div>
                         <textarea class="edit sys_hide" value="# Step `4`: Ctrl+S to Save the current tree to disc
-Try saving this tree                                " style="height: 120px; overflow: hidden;">                        </textarea>
+Try saving this tree                                                        " style="height: 120px; overflow: hidden;">                        </textarea>
                 </div>
-                <div class="card" data-parent="baaf6209-5069-493e-bc51-72e10c72ab9c" id="7586a52d-f611-457a-83d5-43e5d0dd890f">
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="32937348-6096-4321-b16b-712c09b14c4c">
                         <div class="view"><h1>Step <code>5</code>: Ctrl+L to load a doc from your computer</h1>
 <p>Try downloading then loading these documents</p>
 <ul>
@@ -109,7 +109,7 @@ Try saving this tree                                " style="height: 120px; over
 Try downloading then loading these documents
 - Document 1
 - Document 2
-- Document 3                                                " style="height: 120px; overflow: hidden;">                        </textarea>
+- Document 3                                                                        " style="height: 120px; overflow: hidden;">                        </textarea>
                 </div>            
                     
                     
@@ -117,12 +117,12 @@ Try downloading then loading these documents
         
                     <div class="branch_padding"></div>
                 </div><div class="branch">
-                    <div class="branch_padding"></div><div class="card" data-parent="c5bf71f3-5275-41ce-9cd8-885010db02d2" id="4ee73275-608a-49f7-82f9-6a5b10093543">
+                    <div class="branch_padding"></div><div class="card highlight" data-parent="8bd260b7-267b-471b-a13c-ad3b5e352b24" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_8bd260b7-267b-471b-a13c-ad3b5e352b24" id="feeba258-1922-4e84-bed2-0600d7c9b0d4">
                         <div class="view"><h1>Delete me!</h1></div>
-                        <textarea class="edit sys_hide" value="# Delete me!                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                        <textarea class="edit sys_hide" value="# Delete me!                                                " style="height: 120px; overflow: hidden;">                        </textarea>
                 </div>
                     <div class="branch_padding"></div>
                 </div>
                 <div class="tree_padding"></div>
-            </div>
+            </div>          
         

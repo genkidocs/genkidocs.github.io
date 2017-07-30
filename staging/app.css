@@ -80,8 +80,14 @@ body::-webkit-scrollbar {
 }
 
 .card{
-    padding: 20px
+    padding: 20px;
+    opacity: 0.3;
 }
+
+.card.highlight{
+    opacity: 1;
+}
+
 
 .card .view{
     border: none;

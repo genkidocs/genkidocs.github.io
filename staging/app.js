@@ -3,6 +3,7 @@
     var card_template;
     var branch_template;
     var tree_template;
+    var scrollSpeed = .6;
     var md = window.markdownit({
         html:true,
         highlight: function (str, lang) {
@@ -67,12 +68,59 @@
         }
         reader.readAsText(file);
     }    
+    var highlight = function(cards){
+        $(".card.highlight").removeClass("highlight");
+        cards.map(function(card){
+            $(card).addClass("highlight");
+        })
+    }
+    var branchScroll = function(cards){
+        cards.map(function(_card){
+            var card = $(_card)
+            var branch = $(card).parents(".branch");
+            TweenLite.to(branch, scrollSpeed, {scrollTo:{y:card}});            
+        })
+    }
+
+    var highlightActiveThread = function(){
+        var activeCard = $(".card.active");
+        var activeCardID = $(activeCard).attr("id");
+        var ancestors = [];
+        var descendants = [];
+        var ancestorString = $(activeCard).attr("data-ancestors") || "";
+        if(ancestorString){
+            ancestorString.split("_").map(function(ancestorID){
+                if(!ancestorID) return;
+                ancestors.push($("#"+ancestorID))
+            })
+        }
+        $(".card[data-ancestors*='"+activeCardID+"']").each(function(){
+            descendants.push($(this));
+        })
+        //BranchScroll all Ancestors and first descendant in every branch
+        var branchScrollList = [];
+        var firstDescendantInEachBranch = [];
+        $(".branch").each(function(){
+            var card = $(this).find(".card[data-ancestors*='"+activeCardID+"']").first();
+            if(card.length > 0){
+                firstDescendantInEachBranch.push(card);
+            }    
+        })
+        branchScrollList = branchScrollList.concat(ancestors).concat(firstDescendantInEachBranch);
+        branchScroll(branchScrollList);
+        
+        // Highlight all ancestors, active card and descendants
+        var highlightList = [];
+        highlightList.push(activeCard);
+        highlightList = highlightList.concat(ancestors).concat(descendants);
+        highlight(highlightList);
+    }
     var scrollToActiveCard = function(){
         var activeCard = $(".card.active");
-        var branch = $(".card.active").parents(".branch");
-        var scrollSpeed = .6;
+        var branch = $(".card.active").parents(".branch");        
         TweenLite.to(window, scrollSpeed, {scrollTo:{x:activeCard}});
         TweenLite.to(branch, scrollSpeed, {scrollTo:{y:activeCard}});
+        highlightActiveThread();
     }  
 
     var insertAtCaret = function(txtarea, text){            
@@ -119,10 +167,15 @@
         //Add card above
         Mousetrap.bindGlobal(['command+up','ctrl+up'],function(e){            
             var id = uuid();            
-            var parentId = $(".card.active").attr("data-parent");
+            var parentId = $(".card.active").attr("data-parent") || "";
+            var ancestors = ""
+            if(parentId){
+                ancestors = $("#"+parentId).attr("data-ancestors");
+            }                         
             var cardHtml = card_template({
                 id:id,
-                parent:parentId
+                parent:parentId,
+                ancestors:ancestors+"_"+parentId
             });             
             switch(sys_state){
                 case "edit":
@@ -210,11 +263,16 @@
         //Add card below
         Mousetrap.bindGlobal(['command+down','ctrl+down'],function(e){
             var id = uuid();
-            var parentId = $(".card.active").attr("data-parent");
+            var parentId = $(".card.active").attr("data-parent") || "";
+            var ancestors = ""
+            if(parentId){
+                ancestors = $("#"+parentId).attr("data-ancestors");
+            }            
             var cardHtml = card_template({
                 id:id,
-                parent:parentId
-            });             
+                parent:parentId,
+                ancestors:ancestors+"_"+parentId
+            });            
             switch(sys_state){
                 case "edit":
                     switchToView();
@@ -241,10 +299,12 @@
                 $(card).attr("id",parentId);
             }    
             var id = uuid();
+            var ancestors = $(card).attr("data-ancestors");            
             var cardHtml = card_template({
                 id:id,
-                parent:parentId
-            });               
+                parent:parentId,
+                ancestors:ancestors+"_"+parentId
+            });                
             var parentBranch = $(card).parents(".branch");        
             var branchRight = $(parentBranch).next(".branch");            
             var cardNew = $(cardHtml);
