@@ -2,6 +2,7 @@
     var sys_state = "view";
     var card_template;
     var branch_template;
+    var tree_template;
     var md = window.markdownit({
         html:true,
         highlight: function (str, lang) {
@@ -39,20 +40,23 @@
             $(".card.active .view").html(_out);
         }        
         showEls([".card.active .view"]);                    
-        sys_state = "view";        
+        sys_state = "view";    
+        scrollToActiveCard();    
     } 
     var switchToEdit = function(){
         hideEls([".card.active .edit",".card.active .view"]);
         showEls([".card.active .edit"]);
         $(".card.active .edit").focus();
-        sys_state = "edit";        
+        sys_state = "edit"; 
+        scrollToActiveCard();       
     }   
     var setAppBody = function(trees){
             $("#app-body").html(trees);
             $("textarea").each(function(){
                 var val = $(this).attr("value");
                 $(this).val(val);
-            })
+            });
+            scrollToActiveCard();
     };
     var handleFileLoad = function(evt) {
         var file = evt.target.files[0]; // FileList object    
@@ -62,7 +66,38 @@
             setAppBody(treeHtml);
         }
         reader.readAsText(file);
-    }      
+    }    
+    var scrollToActiveCard = function(){
+        var activeCard = $(".card.active");
+        var branch = $(".card.active").parents(".branch");
+        var scrollSpeed = .6;
+        TweenLite.to(window, scrollSpeed, {scrollTo:{x:activeCard}});
+        TweenLite.to(branch, scrollSpeed, {scrollTo:{y:activeCard}});
+    }  
+
+    var insertAtCaret = function(txtarea, text){            
+            var scrollPos = txtarea.scrollTop;
+            var caretPos = txtarea.selectionStart;
+            var front = (txtarea.value).substring(0, caretPos);
+            var back = (txtarea.value).substring(txtarea.selectionEnd, txtarea.value.length);
+            txtarea.value = front + text + back;
+            caretPos = caretPos + text.length;
+            txtarea.selectionStart = caretPos;
+            txtarea.selectionEnd = caretPos;
+            txtarea.focus();
+            txtarea.scrollTop = scrollPos;
+        }
+
+    var MoveCaret = function(txtarea, offset){            
+            var scrollPos = txtarea.scrollTop;
+            var caretPos = txtarea.selectionStart;
+            caretPos = caretPos + offset;
+            txtarea.selectionStart = caretPos;
+            txtarea.selectionEnd = caretPos;
+            txtarea.focus();
+            txtarea.scrollTop = scrollPos;
+        }
+
     var registerHandlers = function(){
 
         $('body').on('input','textarea', function () {
@@ -78,6 +113,7 @@
             }  
             $(".card.active").removeClass("active"); 
             $(this).addClass("active");
+            scrollToActiveCard();
         })
 
         //Add card above
@@ -111,6 +147,7 @@
                     break;
                 }
                 $(card_above).before($(card));
+                scrollToActiveCard();
             }                        
             return false;
         })
@@ -126,6 +163,7 @@
                 }
                 $(".card.active").removeClass("active");
                 $(card_above).addClass("active");
+                scrollToActiveCard();
             }                        
             return false;
         })
@@ -155,11 +193,17 @@
                 card_to_select = card_below;
             }else if(cardsInBranch == 1){
                 var parent_card = $("#"+parentId);
-                card_to_select = parent_card;
-                card = branch;
+                if(parent_card.length > 0){
+                    card_to_select = parent_card;
+                    card = branch;
+                }else{
+                    card_to_select = card;
+                    card = null;                    
+                }
             }                       
             $(card).remove();
             $(card_to_select).addClass("active");
+            scrollToActiveCard();
             return false;
         })
         
@@ -237,6 +281,7 @@
                 }
                 $(".card.active").removeClass("active");
                 $(card_below).addClass("active");
+                scrollToActiveCard();
             }                        
             return false;
         })
@@ -252,9 +297,11 @@
                 if(card.length > 0){
                     $(activeCard).removeClass("active");
                     $(card).addClass("active");
+                    scrollToActiveCard();
                 }else if(firstCard.length > 0){
                     $(activeCard).removeClass("active");
-                    $(firstCard).addClass("active");                    
+                    $(firstCard).addClass("active");
+                    scrollToActiveCard();                    
                 }
             }                      
             return false;
@@ -269,6 +316,7 @@
                 var card = $("#"+parentID);
                 $(activeCard).removeClass("active");
                 $(card).addClass("active");
+                scrollToActiveCard();
             }                      
             return false;
         })
@@ -284,6 +332,7 @@
                     break;
                 }
                 $(card_below).after($(card));
+                scrollToActiveCard();
             }                        
             return false;
         })
@@ -310,12 +359,36 @@
             saveAs(blob, filename);
             return false;
         }); 
+
         //Load tree
         Mousetrap.bind(['command+l', 'ctrl+l'], function(e) {                        
             $("#files").click();
             return false;
-        });        
+        });
+
+        //Create new tree       
+        Mousetrap.bind(['shift+n'], function(e) {                        
+            var id = uuid();
+            var treeHtml = tree_template({
+                id:id
+            });            
+            $("#app-body").html(treeHtml);
+            return false;
+        });
+                
+        //Edit short cuts
+        //insert image       
+        Mousetrap.bindGlobal(['alt+i'], function(e) {                        
+            switch(sys_state){
+                case "edit":
+                    var textArea = $(".card.active .edit")[0];
+                    insertAtCaret(textArea,"![]()");
+                    MoveCaret(textArea,-1);
+                return false;                
+            }            
+        });  
     }
+
     var loadHelp = function(){
         $.ajax({
             url: "sampledocs/genki_help.genkidoc",
@@ -332,7 +405,11 @@
         if(!branch_template){
             var source   = $("#branch_template").html();
             branch_template = Handlebars.compile(source);
-        }                        
+        }
+        if(!tree_template){
+            var source   = $("#tree_template").html();
+            tree_template = Handlebars.compile(source);
+        }                                
         registerHandlers();
         loadHelp();
     }
@@ -340,5 +417,4 @@
     $(document).ready(function(){
         boot();
     });
-}(window))  
-
+}(window))
