@@ -5,8 +5,15 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#9c27b0">
+        <meta name="theme-color" content="#1A191B">        
         <link rel="stylesheet" href="vendors/highlight.js/9.12.0/styles/atom-one-dark.min.css"/>
-        <link rel="stylesheet" href="app.css?v=0.2.0">
+        <link rel="stylesheet" href="icons.css?v=0.0.0"/>
+        <link rel="stylesheet" href="app.css?v=0.2.0"/>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -18,11 +25,13 @@
     </head>
     <body>
         <div id="app-header">
-            <div class="letterhead">
-                genki docs
+            <div class="logo">
+                <div class="icon icon-genki-tree"></div>
             </div>
-            <div class="tree_picker"></div>
-            <div></div>
+            <div class="doc_name">
+                <input type="text"  value="Untitled Document">
+            </div>
+            <div></div>            
         </div>
         <div id="app-body">
             <div class="tree">
