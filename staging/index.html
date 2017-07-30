@@ -44,7 +44,7 @@
             <input type="file" id="files" name="files[]" multiple />
         </div>
         <script id="card_template" type="text/x-handlebars-template">
-                <div class="card" data-parent="{{parent}}" id="{{id}}">
+                <div class="card" data-parent="{{parent}}" data-ancestors="{{ancestors}}" id="{{id}}">
                         <div class="view">
                         </div>
                         <textarea class="edit sys_hide">
@@ -62,7 +62,7 @@
                 <div class="tree_padding"></div>
                 <div class="branch">
                     <div class="branch_padding"></div>
-                        <div class="card active" id="{{id}}">
+                        <div class="card active" id="{{id}}" data-ancestors="" data-parent="">
                                 <div class="view">
                                 </div>
                                 <textarea class="edit sys_hide">
