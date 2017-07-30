@@ -57,6 +57,22 @@
                     <div class="branch_padding"></div>
                 </div>           
         </script>   
+        <script id="tree_template" type="text/x-handlebars-template">
+            <div class="tree">
+                <div class="tree_padding"></div>
+                <div class="branch">
+                    <div class="branch_padding"></div>
+                        <div class="card active" id="{{id}}">
+                                <div class="view">
+                                </div>
+                                <textarea class="edit sys_hide">
+                                </textarea>                            
+                        </div>
+                    <div class="branch_padding"></div>
+                </div>
+                <div class="tree_padding"></div>
+            </div>          
+        </script>                              
         <script src="vendors/jquery/3.2.1/jquery.min.js"></script>
         <script src="vendors/mousetrap/1.6.1/mousetrap.min.js"></script>
         <script src="vendors/mousetrap/1.6.1/plugins/global-bind/mousetrap-global-bind.min.js"></script>

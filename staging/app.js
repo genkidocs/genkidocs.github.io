@@ -2,6 +2,7 @@
     var sys_state = "view";
     var card_template;
     var branch_template;
+    var tree_template;
     var md = window.markdownit({
         html:true,
         highlight: function (str, lang) {
@@ -329,12 +330,25 @@
             saveAs(blob, filename);
             return false;
         }); 
+
         //Load tree
         Mousetrap.bind(['command+l', 'ctrl+l'], function(e) {                        
             $("#files").click();
             return false;
-        });        
+        });
+
+        //Create new tree       
+        Mousetrap.bind(['shift+n'], function(e) {                        
+            var id = uuid();
+            var treeHtml = tree_template({
+                id:id
+            });            
+            $("#app-body").html(treeHtml);
+            return false;
+        });
+                
     }
+
     var loadHelp = function(){
         $.ajax({
             url: "sampledocs/genki_help.genkidoc",
@@ -351,7 +365,11 @@
         if(!branch_template){
             var source   = $("#branch_template").html();
             branch_template = Handlebars.compile(source);
-        }                        
+        }
+        if(!tree_template){
+            var source   = $("#tree_template").html();
+            tree_template = Handlebars.compile(source);
+        }                                
         registerHandlers();
         loadHelp();
     }
@@ -359,5 +377,4 @@
     $(document).ready(function(){
         boot();
     });
-}(window))  
-
+}(window))
