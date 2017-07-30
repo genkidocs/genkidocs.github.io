@@ -169,8 +169,13 @@
                 card_to_select = card_below;
             }else if(cardsInBranch == 1){
                 var parent_card = $("#"+parentId);
-                card_to_select = parent_card;
-                card = branch;
+                if(parent_card.length > 0){
+                    card_to_select = parent_card;
+                    card = branch;
+                }else{
+                    card_to_select = card;
+                    card = null;                    
+                }
             }                       
             $(card).remove();
             $(card_to_select).addClass("active");
