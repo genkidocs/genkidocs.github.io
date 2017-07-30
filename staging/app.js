@@ -39,20 +39,23 @@
             $(".card.active .view").html(_out);
         }        
         showEls([".card.active .view"]);                    
-        sys_state = "view";        
+        sys_state = "view";    
+        scrollToActiveCard();    
     } 
     var switchToEdit = function(){
         hideEls([".card.active .edit",".card.active .view"]);
         showEls([".card.active .edit"]);
         $(".card.active .edit").focus();
-        sys_state = "edit";        
+        sys_state = "edit"; 
+        scrollToActiveCard();       
     }   
     var setAppBody = function(trees){
             $("#app-body").html(trees);
             $("textarea").each(function(){
                 var val = $(this).attr("value");
                 $(this).val(val);
-            })
+            });
+            scrollToActiveCard();
     };
     var handleFileLoad = function(evt) {
         var file = evt.target.files[0]; // FileList object    
@@ -62,7 +65,14 @@
             setAppBody(treeHtml);
         }
         reader.readAsText(file);
-    }      
+    }    
+    var scrollToActiveCard = function(){
+        var activeCard = $(".card.active");
+        var branch = $(".card.active").parents(".branch");
+        var scrollSpeed = .6;
+        TweenLite.to(window, scrollSpeed, {scrollTo:{x:activeCard}});
+        TweenLite.to(branch, scrollSpeed, {scrollTo:{y:activeCard}});
+    }  
     var registerHandlers = function(){
 
         $('body').on('input','textarea', function () {
@@ -78,6 +88,7 @@
             }  
             $(".card.active").removeClass("active"); 
             $(this).addClass("active");
+            scrollToActiveCard();
         })
 
         //Add card above
@@ -111,6 +122,7 @@
                     break;
                 }
                 $(card_above).before($(card));
+                scrollToActiveCard();
             }                        
             return false;
         })
@@ -126,6 +138,7 @@
                 }
                 $(".card.active").removeClass("active");
                 $(card_above).addClass("active");
+                scrollToActiveCard();
             }                        
             return false;
         })
@@ -160,6 +173,7 @@
             }                       
             $(card).remove();
             $(card_to_select).addClass("active");
+            scrollToActiveCard();
             return false;
         })
         
@@ -237,6 +251,7 @@
                 }
                 $(".card.active").removeClass("active");
                 $(card_below).addClass("active");
+                scrollToActiveCard();
             }                        
             return false;
         })
@@ -252,9 +267,11 @@
                 if(card.length > 0){
                     $(activeCard).removeClass("active");
                     $(card).addClass("active");
+                    scrollToActiveCard();
                 }else if(firstCard.length > 0){
                     $(activeCard).removeClass("active");
-                    $(firstCard).addClass("active");                    
+                    $(firstCard).addClass("active");
+                    scrollToActiveCard();                    
                 }
             }                      
             return false;
@@ -269,6 +286,7 @@
                 var card = $("#"+parentID);
                 $(activeCard).removeClass("active");
                 $(card).addClass("active");
+                scrollToActiveCard();
             }                      
             return false;
         })
@@ -284,6 +302,7 @@
                     break;
                 }
                 $(card_below).after($(card));
+                scrollToActiveCard();
             }                        
             return false;
         })
