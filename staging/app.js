@@ -74,6 +74,30 @@
         TweenLite.to(window, scrollSpeed, {scrollTo:{x:activeCard}});
         TweenLite.to(branch, scrollSpeed, {scrollTo:{y:activeCard}});
     }  
+
+    var insertAtCaret = function(txtarea, text){            
+            var scrollPos = txtarea.scrollTop;
+            var caretPos = txtarea.selectionStart;
+            var front = (txtarea.value).substring(0, caretPos);
+            var back = (txtarea.value).substring(txtarea.selectionEnd, txtarea.value.length);
+            txtarea.value = front + text + back;
+            caretPos = caretPos + text.length;
+            txtarea.selectionStart = caretPos;
+            txtarea.selectionEnd = caretPos;
+            txtarea.focus();
+            txtarea.scrollTop = scrollPos;
+        }
+
+    var MoveCaret = function(txtarea, offset){            
+            var scrollPos = txtarea.scrollTop;
+            var caretPos = txtarea.selectionStart;
+            caretPos = caretPos + offset;
+            txtarea.selectionStart = caretPos;
+            txtarea.selectionEnd = caretPos;
+            txtarea.focus();
+            txtarea.scrollTop = scrollPos;
+        }
+
     var registerHandlers = function(){
 
         $('body').on('input','textarea', function () {
@@ -352,6 +376,17 @@
             return false;
         });
                 
+        //Edit short cuts
+        //insert image       
+        Mousetrap.bindGlobal(['alt+i'], function(e) {                        
+            switch(sys_state){
+                case "edit":
+                    var textArea = $(".card.active .edit")[0];
+                    insertAtCaret(textArea,"![]()");
+                    MoveCaret(textArea,-1);
+                return false;                
+            }            
+        });  
     }
 
     var loadHelp = function(){
