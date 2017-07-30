@@ -15,7 +15,15 @@ A genki doc is a collection of cards written using markdown arranged in a tree l
                         </div>
                     <div class="branch_padding"></div>
                 </div><div class="branch">
-                    <div class="branch_padding"></div><div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="c277ed60-2046-407b-9acb-c46084adb11a">
+                    <div class="branch_padding"></div>
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="51334754-c73e-431e-9138-f1ab635221b7">
+                        <div class="view"><h1>What is Genki</h1>
+<p>Genki is a tree based markdown editor</p></div>
+                        <textarea class="edit sys_hide" value="# What is Genki
+
+Genki is a tree based markdown editor" style="height: 120px; overflow: hidden;"></textarea>
+                </div>            
+        <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="c277ed60-2046-407b-9acb-c46084adb11a">
                         <div class="view"><h1>What can I use Genki for?</h1>
 <ul>
 <li>Writing:
@@ -63,7 +71,46 @@ The basics:
 - Ctrl+Enter to edit and save a card.
 - Arrows to move around
 - Del to delete                                                " style="height: 134px; overflow: hidden;">                        </textarea>
+                </div>
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="eb7470e8-477b-4faa-8d93-a29256342e23">
+                        <div class="view"><h1>How much does it cost?</h1>
+<p>The online Genki editor distributed under github is and will always be free.</p></div>
+                        <textarea class="edit sys_hide" value="# How much does it cost?
+
+The online Genki editor distributed under github is and will always be free." style="height: 120px; overflow: hidden;"></textarea>
+                </div>
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="d3bc2517-1889-4951-9f0a-cec7241c4550">
+                        <div class="view"><h1>So how do you plan on making money?</h1>
+<p>Genki has originally been designed as a <strong>free</strong> alternative to <a target="_blank" href="https://gingkoapp.com/app">Gingko</a><a></a>.</p>
+<p>It is intended to be used as tool for research / thesis writing and organisation.</p>
+<p>So no plans have been made... yet</p></div>
+                        <textarea class="edit sys_hide" value="# So how do you plan on making money?
+
+Genki has originally been designed as a **free** alternative to <a target=&quot;_blank&quot; href=&quot;https://gingkoapp.com/app&quot; >Gingko<a/>. 
+
+It is intended to be used as tool for research / thesis writing and organisation.
+
+So no plans have been made... yet" style="height: 194px; overflow: hidden;"></textarea>
+                </div>
+                            
+                    
+                    
+        
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="4392beab-8461-4087-895d-47f0eb59ae03">
+                        <div class="view"><h1>Where can I send feedback?</h1>
+<p>You can send your feed back on one of these channels</p>
+<ul>
+<li>Twitter <a target="_blank" href="https://twitter.com/genkidocs">@genkidocs</a></li>
+<li>Email <a target="_blank" href="mailto:genkidocs@gmail.com">genkidocs@gmail.com</a></li>
+</ul></div>
+                        <textarea class="edit sys_hide" value="# Where can I send feedback?
+
+You can send your feed back on one of these channels
+
+- Twitter <a target=&quot;_blank&quot; href=&quot;https://twitter.com/genkidocs&quot; >@genkidocs</a>
+- Email <a target=&quot;_blank&quot; href=&quot;mailto:genkidocs@gmail.com&quot; >genkidocs@gmail.com</a>" style="height: 164px; overflow: hidden;"></textarea>
                 </div>            
+                    
         
                     <div class="branch_padding"></div>
                 </div><div class="branch">

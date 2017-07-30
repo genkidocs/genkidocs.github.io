@@ -35,6 +35,27 @@ body{
     z-index: 1;
 }
 
+#app-header .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app-header .logo .icon{
+    font-size: 30px;
+    color: rgba(255,255,255,.5);
+}
+
+
+#app-header .doc_name input{
+    width: 100%;
+    background: none;
+    color: #bbb;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 1.2em;
+}
 #app-body{
     height: 100%;
 }
