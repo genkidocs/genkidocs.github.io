@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Genki</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -13,15 +13,15 @@
         <meta name="theme-color" content="#1A191B">        
         <link rel="stylesheet" href="vendors/highlight.js/9.12.0/styles/atom-one-dark.min.css"/>
         <link rel="stylesheet" href="icons.css?v=0.0.0"/>
-        <link rel="stylesheet" href="app.css?v=0.3.0"/>
-        <script>
+        <link rel="stylesheet" href="app.css?v=0.4.0"/>
+         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-103053072-1', 'auto');
             ga('send', 'pageview');
-        </script>        
+        </script>         
     </head>
     <body>
         <div id="app-header">
@@ -29,7 +29,7 @@
                 <div class="icon icon-genki-tree"></div>
             </div>
             <div class="doc_name">
-                <input type="text"  value="Untitled Document">
+                <input type="text" id="doc_name" data-doc-id=""  value="Untitled Document">
             </div>
             <div></div>            
         </div>
@@ -48,14 +48,34 @@
                 <div class="tree_padding"></div>
             </div>
         </div>
+        <div class="meta_ctrls">
+            <div id="filePicker">
+                <div class="file">
+                    <div class="name">
+                        This is a file name
+                    </div>
+                </div>
+                <div class="file active">
+                    <div class="name">
+                        This is an active file
+                    </div>
+                </div>
+                <div class="file">
+                    <div class="name">
+                        This is another file
+                    </div>
+                </div>                
+            </div>
+        </div>
         <div id="helpers" class="sys_hide">
             <input type="file" id="files" name="files[]" multiple />
         </div>
         <script id="card_template" type="text/x-handlebars-template">
                 <div class="card" data-parent="{{parent}}" data-ancestors="{{ancestors}}" id="{{id}}">
                         <div class="view">
+                            {{{render}}}
                         </div>
-                        <textarea class="edit sys_hide"></textarea>
+                        <textarea class="edit sys_hide" value="{{md}}">{{md}}</textarea>
                 </div>            
         </script> 
         <script id="branch_template" type="text/x-handlebars-template">
@@ -65,20 +85,18 @@
                 </div>           
         </script>   
         <script id="tree_template" type="text/x-handlebars-template">
-            <div class="tree">
+            <div class="tree" data-name="{{name}}" id={{id}} >
                 <div class="tree_padding"></div>
-                <div class="branch">
-                    <div class="branch_padding"></div>
-                        <div class="card active" id="{{id}}" data-ancestors="" data-parent="">
-                                <div class="view">
-                                </div>
-                                <textarea class="edit sys_hide"></textarea>                            
-                        </div>
-                    <div class="branch_padding"></div>
-                </div>
                 <div class="tree_padding"></div>
             </div>          
-        </script>                              
+        </script>
+        <script id="file_template" type="text/x-handlebars-template">
+                <div class="file" id="file_{{id}}">
+                    <div class="name">
+                        {{name}}
+                    </div>
+                </div>         
+        </script>                                      
         <script src="vendors/jquery/3.2.1/jquery.min.js"></script>
         <script src="vendors/mousetrap/1.6.1/mousetrap.min.js"></script>
         <script src="vendors/mousetrap/1.6.1/plugins/global-bind/mousetrap-global-bind.min.js"></script>
@@ -90,6 +108,7 @@
         <script src="vendors/FileSaver.js/1.3.3/FileSaver.min.js"></script>
         <script src="vendors/gsap/1.20.2/TweenMax.min.js"></script>
         <script src="vendors/gsap/1.20.2/plugins/ScrollToPlugin.min.js"></script>
+        <script src="vendors/dexie@1.5.1/dist/dexie.min.js"></script>
         <script src="app.js?v=0.1.0"></script>
     </body>
 </html>

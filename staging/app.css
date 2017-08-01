@@ -15,22 +15,22 @@ html,body{
 }
 
 body{
-    background-color: #1A191B;
+    background-color: #181818;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-y:hidden;
-    color: #bbb;
+    color: #c2c2c2;
 }
 
 #app-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgba(255,255,255,1);
+    color: #c2c2c2;
     padding-left: 20px;
     padding-right: 20px;
     height: 50px;
     width: 100%;
-    background-color:#282729; 
+    background-color:#212121; 
     position: fixed;
     z-index: 1;
 }
@@ -47,6 +47,9 @@ body{
 }
 
 
+#app-header .doc_name{
+    width: 100%;
+}
 #app-header .doc_name input{
     width: 100%;
     background: none;
@@ -85,10 +88,10 @@ body{
     height: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(255,255,255,.1);
+    border: 1px solid #212121;
     bottom: 0;
     overflow-y: auto;  
-    margin-top: 49px;    
+    margin-top: 50px;    
 }
 
 .branch::-webkit-scrollbar,
@@ -124,6 +127,11 @@ body::-webkit-scrollbar {
 }
 
 .card h1 > code,
+.card h2 > code,
+.card h3 > code,
+.card h4 > code,
+.card h5 > code,
+.card h6 > code,
 .card p > code,
 .card li > code{
     background: rgba(255,255,255,.1);
@@ -136,6 +144,9 @@ body::-webkit-scrollbar {
     border-top: 4px solid rgba(75, 50, 102, 1);
 }
 
+.card .view pre{
+    white-space: pre-wrap;
+}
 
 .card .view img{
     max-width: 100%;
@@ -180,4 +191,30 @@ body::-webkit-scrollbar {
 .card ul,
 .card ol{
     margin:0;
+}
+
+.meta_ctrls #filePicker{
+    position: fixed;
+    background-color: #212121;
+    width: 450px;
+    height: 300px;
+    top: -100%;    
+    font-size: .9em;
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,.5)
+}
+
+.meta_ctrls #filePicker .file{
+    cursor: default;    
+    padding: 10px;
+}
+
+.meta_ctrls #filePicker .file:hover,
+.meta_ctrls #filePicker .file.active:hover{
+    color:#8B8B8B;
+    background-color:#272727;
+}
+
+
+.meta_ctrls #filePicker .file.active{
+    background-color:#36414D
 }

@@ -3,7 +3,10 @@
     var card_template;
     var branch_template;
     var tree_template;
+    var file_template;
     var scrollSpeed = .6;
+    var dbVersion = 1;
+    var db = new Dexie("genki_database");
     var md = window.markdownit({
         html:true,
         highlight: function (str, lang) {
@@ -42,7 +45,8 @@
         }        
         showEls([".card.active .view"]);                    
         sys_state = "view";    
-        scrollToActiveCard();    
+        scrollToActiveCard();  
+        saveToDb();  
     } 
     var switchToEdit = function(){
         hideEls([".card.active .edit",".card.active .view"]);
@@ -51,8 +55,13 @@
         sys_state = "edit"; 
         scrollToActiveCard();       
     }   
-    var setAppBody = function(trees){
-            $("#app-body").html(trees);
+    var setAppBody = function(treeHtml){
+            
+            var tree = $(treeHtml)
+            $("#doc_name").val($(tree).attr("data-name"))
+            $("#doc_name").attr("data-doc-id",$(tree).attr("id"));
+            $("#app-body").html("");
+            $("#app-body").append(tree)
             $("textarea").each(function(){
                 var val = $(this).attr("value");
                 $(this).val(val);
@@ -121,6 +130,7 @@
         TweenLite.to(window, scrollSpeed, {scrollTo:{x:activeCard}});
         TweenLite.to(branch, scrollSpeed, {scrollTo:{y:activeCard}});
         highlightActiveThread();
+        saveToDb();
     }  
 
     var insertAtCaret = function(txtarea, text){            
@@ -165,13 +175,35 @@
             txtarea.scrollTop = scrollPos;
         }
 
-    var registerHandlers = function(){
+    var closeFileManager = function(){
+        $("#filePicker").css({
+            "top":"-100%"
+        });
+        sys_state = "view"
+    }
+        var registerHandlers = function(){
 
         $('body').on('input','textarea', function () {
             resizeTextarea(this);
         });
 
         $("#files").on("change",handleFileLoad);
+
+        $('body').on("keyup","#doc_name",function(){
+            saveToDb();
+        })
+
+        $('body').on("keyup","textarea",function(){
+            saveToDb();
+        })
+
+        $("body").on("click",".file",function(){
+            var docId = $(this).attr("id").replace("file_","").trim();
+            db.docs.get(docId).then(function(doc){
+                loadDoc(doc);
+                closeFileManager();
+            });
+        });
 
         $('body').on("click",".card",function(){
             switch(sys_state){
@@ -184,7 +216,7 @@
         })
 
         //Add card above
-        Mousetrap.bindGlobal(['command+up','ctrl+up'],function(e){            
+        Mousetrap.bindGlobal(['alt+up'],function(e){            
             var id = uuid();            
             var parentId = $(".card.active").attr("data-parent") || "";
             var ancestors = ""
@@ -209,7 +241,7 @@
         })
 
         //Move card above
-        Mousetrap.bindGlobal(['command+shift+up','ctrl+shift+up'],function(e){
+        Mousetrap.bindGlobal(['alt+shift+up'],function(e){
             var card = $(".card.active");
             var card_above = $(card).prev(".card");
             if(card_above.length > 0){
@@ -241,7 +273,7 @@
         })
 
         //Delete card
-        Mousetrap.bind(['del'],function(e){
+        Mousetrap.bind(['alt+backspace'],function(e){
             var cards = $(".card").length;            
             if(cards == 1){
                 return false;
@@ -280,7 +312,7 @@
         })
         
         //Add card below
-        Mousetrap.bindGlobal(['command+down','ctrl+down'],function(e){
+        Mousetrap.bindGlobal(['alt+down'],function(e){
             var id = uuid();
             var parentId = $(".card.active").attr("data-parent") || "";
             var ancestors = ""
@@ -305,7 +337,7 @@
         })
 
         //Add card to the right
-        Mousetrap.bindGlobal(['command+right','ctrl+right'],function(e){          
+        Mousetrap.bindGlobal(['alt+right'],function(e){          
             switch(sys_state){
                 case "edit":
                     switchToView();
@@ -401,7 +433,7 @@
         })
         
         //Move card below
-        Mousetrap.bind(['command+shift+down','ctrl+shift+down'],function(e){
+        Mousetrap.bind(['alt+shift+down'],function(e){
             var card = $(".card.active");
             var card_below = $(card).next(".card");
             if(card_below.length > 0){
@@ -417,7 +449,7 @@
         })
 
         //View | Edit active card
-        Mousetrap.bindGlobal(['command+enter', 'ctrl+enter'], function(e) {                        
+        Mousetrap.bindGlobal(['alt+enter'], function(e) {                        
             switch(sys_state){
                 case "view":
                     switchToEdit();
@@ -430,7 +462,7 @@
         });
 
         //Save tree
-        Mousetrap.bind(['command+s', 'ctrl+s'], function(e) {                        
+        Mousetrap.bind(['alt+s'], function(e) {                        
             var treeHtml = $("#app-body").html();
             var filename = "tree_"+moment().toISOString()+".genkidoc";
             console.log("Saving : " + filename);
@@ -439,22 +471,76 @@
             return false;
         }); 
 
-        //Load tree
-        Mousetrap.bind(['command+l', 'ctrl+l'], function(e) {                        
-            $("#files").click();
+        //Create new tree       
+        Mousetrap.bind(['alt+n'], function(e) {                        
+            var treeId = uuid();
+            var treeName = "Untitled Document";
+            var startTreeHtml = tree_template({
+                id:treeId,
+                name:treeName
+            });
+            var startTree = $(startTreeHtml);
+            $("#doc_name").val(treeName);
+            $("#doc_name").attr("data-doc-id",treeId);
+
+
+            var cardId = uuid();
+            var startMd = "## Start here...";            
+            var cardRender = md.render(startMd).trim();
+            var startCardHtml = card_template({
+                id:cardId,
+                parent:"",
+                ancestors:"",
+                md:startMd,
+                render:cardRender
+            });  
+            var startCard = $(startCardHtml);
+            
+            var startBranchHtml = branch_template();
+            var startBranch = $(startBranchHtml);                
+            $(startBranch).find(".branch_padding").first().after(startCard);
+            $(startTree).find(".tree_padding").last().before(startBranch);
+            
+            
+            $("#app-body").html("");
+            $("#app-body").append(startTree);
+            $("#"+cardId).addClass("active");
+            scrollToActiveCard();
             return false;
         });
 
-        //Create new tree       
-        Mousetrap.bind(['shift+n'], function(e) {                        
-            var id = uuid();
-            var treeHtml = tree_template({
-                id:id
-            });            
-            $("#app-body").html(treeHtml);
-            return false;
+        //Open FileManager
+        Mousetrap.bindGlobal(['alt+t'], function(e) {                        
+            switch(sys_state){
+                case "view":
+                    db.docs.toArray().then(function(docs){                        
+                        var filePickerHtml = "";
+                        docs.map(function(doc){
+                            var fileHtml = file_template(doc);
+                            filePickerHtml += fileHtml;
+                        })
+
+                        $("#filePicker").html("");
+                        $("#filePicker").append(filePickerHtml);
+                        var activeDocId = $("#doc_name").attr("data-doc-id");
+                        $("#file_"+activeDocId).addClass("active");
+
+                        var top = $(window).outerHeight()/2 - $("#filePicker").outerHeight()/2;
+                        var left = $(window).outerWidth()/2 - $("#filePicker").outerWidth()/2;
+                        $("#filePicker").css({
+                            "top":top,
+                            "left":left
+                        });
+                        sys_state = "filePicker"    
+                        $("#filePicker").focus();                
+                    })
+                return false;              
+                default:
+                    closeFileManager();
+                return false;  
+            }            
         });
-                
+
         //Edit short cuts
         //insert image       
         Mousetrap.bindGlobal(['alt+i'], function(e) {                        
@@ -471,14 +557,153 @@
                 case "edit":
                     var textArea = $(".card.active .edit")[0];
                     var selectionLength = textArea.selectionEnd - textArea.selectionStart;
-                    console.log("Selection Length : " + selectionLength);
+                    //console.log("Selection Length : " + selectionLength);
                     var offset = selectionLength + 4 + 3;
                     insertBeforeSelection(textArea,"<a target=\"_blank\" href=\"\" >");
                     insertAfterSelection(textArea,"</a>");
                     MoveCaret(textArea,-offset);
                 return false;                
+                case "view":
+                    $("#files").click();
+                return false;
             }            
         });  
+    }
+    
+    var saveToDb = function(){        
+        var docName = $("#doc_name").val();
+        var docId = $("#doc_name").attr("data-doc-id");
+        var activeCardId = $(".card.active").attr("id");
+        var cards = [];
+        var ancestorMap = {};
+        if(!docId){
+            //console.log("No Doc ID found")
+            docId = uuid();
+            $("#doc_name").attr("data-doc-id",docId);
+        }
+        //console.log("Name : " + docName);
+        //console.log("Id : " + docId);
+        var branchNo = 0;
+        $(".branch").each(function(){
+            //console.log("\n---\nBranch No : " + branchNo);
+            var cardNo = 0;
+            $(this).find(".card").each(function(){
+                //console.log("\n###")
+                var md = $(this).find(".edit").val();
+                var id = $(this).attr("id");
+                var parentId = $(this).attr("data-parent");
+                var ancestors = $(this).attr("data-ancestors");
+                if(parentId){
+                    //console.log("Has parent");
+                    if((/undefined/g).test(ancestors)){
+                        //console.log("Need to fix ancestors");
+                        ancestors = ancestorMap[parentId] + "_" + parentId;
+                    }else{
+                        //console.log("Don't need to fix ancestors");
+                    }
+                }else{
+                    //console.log("Has no parent");
+                    ancestors = "";
+                }
+                //console.log("Card No : " + cardNo);
+                //console.log("Card Id : " + id);                
+                //console.log("Parent : " + parentId);
+                //console.log("Ancestors : " + ancestors);
+                ancestorMap[id] = ancestors;
+                var card = {
+                    branchNo:branchNo,
+                    cardNo : cardNo,
+                    id:id,
+                    parentId:parentId,
+                    ancestors:ancestors,
+                    md:md
+                }
+                cards.push(card);
+                cardNo++;
+            })
+            branchNo++;
+        })
+        var doc = {
+            name:docName,
+            id:docId,
+            cards:cards,
+            activeCardId:activeCardId,
+            lastModified:moment().toISOString()
+        }
+        //console.dir(doc);
+        db.transaction("rw",db.docs,db.meta,function(){
+            db.docs.put(doc).then(function(){
+                //console.log("Docs updated!");            
+            });
+            db.meta.put({
+                "name":"activeDocId",
+                "value":doc["id"]
+            }).then(function(){
+                //console.log("Meta updated!");
+            })               
+
+        }).then(function(){
+            //console.log("Db updated!");
+        }).catch(function (error) {
+            //console.error(error);
+        });     
+    }
+
+    var loadDoc = function(doc){
+        //console.log("Loading Doc : " + doc["name"]);
+        //console.dir(doc)
+        $("#doc_name").val(doc["name"]);
+        $("#doc_name").attr("data-doc-id",doc["id"]);
+        var treeHtml = tree_template({
+                id:doc["id"],
+                name:doc["name"]
+        });
+        var branchBuffer = undefined;
+        var cardsHtmlBuffer = "";
+        var treeNew = $(treeHtml);
+        doc["cards"]
+        .map(function(card){
+            //console.log("\n---\n")
+            if((/undefined/g).test(branchBuffer)){
+                //console.log("No branch buffer");
+                branchBuffer = card["branchNo"];
+            }
+
+            //console.log("Branch : " + card["branchNo"])
+            //console.log("Branch Buffer : " + branchBuffer)
+
+            if(branchBuffer !== card["branchNo"]){
+                //console.log("Branch buffer doesn't match");
+                var branchHtml = branch_template();
+                var branchNew = $(branchHtml);                
+                $(branchNew).find(".branch_padding").first().after(cardsHtmlBuffer);
+                $(treeNew).find(".tree_padding").last().before(branchNew);
+                cardsHtmlBuffer = "";
+                branchBuffer = card["branchNo"];
+            }
+
+            var cardRender = md.render(card["md"]).trim();
+            var cardHtml = card_template({
+                id:card["id"],
+                parent:card["parentId"],
+                ancestors:card["ancestors"],
+                md:card["md"],
+                render:cardRender
+            }); 
+            cardsHtmlBuffer += cardHtml;
+        });
+
+        if(cardsHtmlBuffer){
+                var branchHtml = branch_template();
+                var branchNew = $(branchHtml);                
+                $(branchNew).find(".branch_padding").first().after(cardsHtmlBuffer);
+                $(treeNew).find(".tree_padding").last().before(branchNew);
+        }
+        
+        $("#app-body").html("");
+        $("#app-body").append(treeNew);
+        $("#"+doc["activeCardId"]).addClass("active");
+        scrollToActiveCard();
     }
 
     var loadHelp = function(){
@@ -501,9 +726,29 @@
         if(!tree_template){
             var source   = $("#tree_template").html();
             tree_template = Handlebars.compile(source);
-        }                                
-        registerHandlers();
-        loadHelp();
+        }       
+        if(!file_template){
+            var source   = $("#file_template").html();
+            file_template = Handlebars.compile(source);
+        }                       
+        db.version(dbVersion).stores({
+            docs: 'id,name,cards,activeCardId,lastModified',
+            meta: 'name,value'
+        });                              
+        registerHandlers();     
+        db.meta.get("activeDocId")
+        .then(function (metaActiveDocId) {
+            if(!metaActiveDocId){
+                loadHelp();     
+            }else{                
+                db.docs.get(metaActiveDocId["value"])
+                .then(function(doc){                    
+                    loadDoc(doc)
+                })
+            }            
+        }).catch(function (error) {
+            console.error (error.stack || error);
+        });        
     }
 
     $(document).ready(function(){
