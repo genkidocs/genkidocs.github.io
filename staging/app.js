@@ -273,7 +273,7 @@
         })
 
         //Delete card
-        Mousetrap.bind(['del'],function(e){
+        Mousetrap.bind(['alt+backspace'],function(e){
             var cards = $(".card").length;            
             if(cards == 1){
                 return false;
