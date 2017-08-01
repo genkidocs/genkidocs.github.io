@@ -48,6 +48,25 @@
                 <div class="tree_padding"></div>
             </div>
         </div>
+        <div class="meta_ctrls">
+            <div id="filePicker">
+                <div class="file">
+                    <div class="name">
+                        This is a file name
+                    </div>
+                </div>
+                <div class="file active">
+                    <div class="name">
+                        This is an active file
+                    </div>
+                </div>
+                <div class="file">
+                    <div class="name">
+                        This is another file
+                    </div>
+                </div>                
+            </div>
+        </div>
         <div id="helpers" class="sys_hide">
             <input type="file" id="files" name="files[]" multiple />
         </div>
@@ -70,7 +89,14 @@
                 <div class="tree_padding"></div>
                 <div class="tree_padding"></div>
             </div>          
-        </script>                              
+        </script>
+        <script id="file_template" type="text/x-handlebars-template">
+                <div class="file" id="file_{{id}}">
+                    <div class="name">
+                        {{name}}
+                    </div>
+                </div>         
+        </script>                                      
         <script src="vendors/jquery/3.2.1/jquery.min.js"></script>
         <script src="vendors/mousetrap/1.6.1/mousetrap.min.js"></script>
         <script src="vendors/mousetrap/1.6.1/plugins/global-bind/mousetrap-global-bind.min.js"></script>

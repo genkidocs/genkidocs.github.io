@@ -3,6 +3,7 @@
     var card_template;
     var branch_template;
     var tree_template;
+    var file_template;
     var scrollSpeed = .6;
     var dbVersion = 1;
     var db = new Dexie("genki_database");
@@ -174,7 +175,12 @@
             txtarea.scrollTop = scrollPos;
         }
 
-    
+    var closeFileManager = function(){
+        $("#filePicker").css({
+            "top":"100%"
+        });
+        sys_state = "view"
+    }
         var registerHandlers = function(){
 
         $('body').on('input','textarea', function () {
@@ -190,6 +196,14 @@
         $('body').on("keyup","textarea",function(){
             saveToDb();
         })
+
+        $("body").on("click",".file",function(){
+            var docId = $(this).attr("id").replace("file_","").trim();
+            db.docs.get(docId).then(function(doc){
+                loadDoc(doc);
+                closeFileManager();
+            });
+        });
 
         $('body').on("click",".card",function(){
             switch(sys_state){
@@ -494,7 +508,39 @@
             scrollToActiveCard();
             return false;
         });
-                
+
+        //Open FileManager
+        Mousetrap.bindGlobal(['alt+t'], function(e) {                        
+            switch(sys_state){
+                case "view":
+                    db.docs.toArray().then(function(docs){                        
+                        var filePickerHtml = "";
+                        docs.map(function(doc){
+                            var fileHtml = file_template(doc);
+                            filePickerHtml += fileHtml;
+                        })
+
+                        $("#filePicker").html("");
+                        $("#filePicker").append(filePickerHtml);
+                        var activeDocId = $("#doc_name").attr("data-doc-id");
+                        $("#file_"+activeDocId).addClass("active");
+
+                        var top = $(window).outerHeight()/2 - $("#filePicker").outerHeight()/2;
+                        var left = $(window).outerWidth()/2 - $("#filePicker").outerWidth()/2;
+                        $("#filePicker").css({
+                            "top":top,
+                            "left":left
+                        });
+                        sys_state = "filePicker"    
+                        $("#filePicker").focus();                
+                    })
+                return false;              
+                default:
+                    closeFileManager();
+                return false;  
+            }            
+        });
+
         //Edit short cuts
         //insert image       
         Mousetrap.bindGlobal(['alt+i'], function(e) {                        
@@ -680,7 +726,11 @@
         if(!tree_template){
             var source   = $("#tree_template").html();
             tree_template = Handlebars.compile(source);
-        }          
+        }       
+        if(!file_template){
+            var source   = $("#file_template").html();
+            file_template = Handlebars.compile(source);
+        }                       
         db.version(dbVersion).stores({
             docs: 'id,name,cards,activeCardId,lastModified',
             meta: 'name,value'

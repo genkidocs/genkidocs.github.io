@@ -189,3 +189,28 @@ body::-webkit-scrollbar {
 .card ol{
     margin:0;
 }
+
+.meta_ctrls #filePicker{
+    position: fixed;
+    background-color: #212121;
+    width: 450px;
+    height: 300px;
+    top: 100%;    
+    font-size: .9em;
+}
+
+.meta_ctrls #filePicker .file{
+    cursor: default;    
+    padding: 10px;
+}
+
+.meta_ctrls #filePicker .file:hover,
+.meta_ctrls #filePicker .file.active:hover{
+    color:#8B8B8B;
+    background-color:#272727;
+}
+
+
+.meta_ctrls #filePicker .file.active{
+    background-color:#36414D
+}
