@@ -177,7 +177,7 @@
 
     var closeFileManager = function(){
         $("#filePicker").css({
-            "top":"100%"
+            "top":"-100%"
         });
         sys_state = "view"
     }
