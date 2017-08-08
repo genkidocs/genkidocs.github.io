@@ -1,15 +1,18 @@
 (function(window){
     var sys_state = "view";
+    localStorage.setItem("sys_state",sys_state);
     var card_template;
     var branch_template;
     var tree_template;
     var file_template;
-    var scrollSpeed = .6;
-    var dbVersion = 1;
-    var db = new Dexie("genki_database");
+    var prev_card;
+    var scrollSpeed = .6;    
+    var db = window.db;    
     var md = window.markdownit({
         html:true,
-        highlight: function (str, lang) {
+        linkify:true,
+        typographer:true,
+        highlight:function (str, lang) {
             if (lang && hljs.getLanguage(lang)) {
             try {
                 return '<pre class="hljs"><code>' +
@@ -45,6 +48,7 @@
         }        
         showEls([".card.active .view"]);                    
         sys_state = "view";    
+        localStorage.setItem("sys_state",sys_state);
         scrollToActiveCard();  
         saveToDb();  
     } 
@@ -53,6 +57,7 @@
         showEls([".card.active .edit"]);
         $(".card.active .edit").focus();
         sys_state = "edit"; 
+        localStorage.setItem("sys_state",sys_state);
         scrollToActiveCard();       
     }   
     var setAppBody = function(treeHtml){
@@ -84,10 +89,19 @@
         })
     }
     var branchScroll = function(cards){
+        var activeCardId = $(".card.active").attr("id");
+        var prevCardParentId = $(prev_card).attr("data-parent");
+        var isParent = (prevCardParentId == activeCardId);        
+        if(isParent){
+            return;
+        };
         cards.map(function(_card){
             var card = $(_card)
             var branch = $(card).parents(".branch");
-            TweenLite.to(branch, scrollSpeed, {scrollTo:{y:card}});            
+            var branchHeight = $(branch).outerHeight();
+            var cardHeight = $(card).outerHeight();
+            var offsetHeight = branchHeight/2 - cardHeight/2;
+            TweenLite.to(branch, scrollSpeed, {scrollTo:{y:card,offsetY:offsetHeight}});            
         })
     }
 
@@ -127,8 +141,16 @@
     var scrollToActiveCard = function(){
         var activeCard = $(".card.active");
         var branch = $(".card.active").parents(".branch");        
-        TweenLite.to(window, scrollSpeed, {scrollTo:{x:activeCard}});
-        TweenLite.to(branch, scrollSpeed, {scrollTo:{y:activeCard}});
+        var branchHeight = $(branch).outerHeight();
+        var cardHeight = $(activeCard).outerHeight();
+        var offsetHeight = branchHeight/2 - cardHeight/2;
+
+        var windowWidth = $(window).outerWidth();
+        var cardWidth = $(activeCard).outerWidth();
+        var offsetWidth = windowWidth/2 - cardWidth/2;
+
+        TweenLite.to(window, scrollSpeed, {scrollTo:{x:activeCard,offsetX:offsetWidth}});
+        TweenLite.to(branch, scrollSpeed, {scrollTo:{y:activeCard,offsetY:offsetHeight}});
         highlightActiveThread();
         saveToDb();
     }  
@@ -180,6 +202,7 @@
             "top":"-100%"
         });
         sys_state = "view"
+        localStorage.setItem("sys_state",sys_state)
     }
         var registerHandlers = function(){
 
@@ -210,6 +233,7 @@
                 case "edit":
                     return;
             }  
+            prev_card =  $(".card.active");
             $(".card.active").removeClass("active"); 
             $(this).addClass("active");
             scrollToActiveCard();
@@ -242,7 +266,7 @@
 
         //Move card above
         Mousetrap.bindGlobal(['alt+shift+up'],function(e){
-            var card = $(".card.active");
+            var card = $(".card.active");            
             var card_above = $(card).prev(".card");
             if(card_above.length > 0){
                 switch(sys_state){
@@ -265,6 +289,7 @@
                         switchToView();
                     break;
                 }
+                prev_card = $(".card.active");
                 $(".card.active").removeClass("active");
                 $(card_above).addClass("active");
                 scrollToActiveCard();
@@ -390,6 +415,7 @@
                         switchToView();
                     break;
                 }
+                prev_card = $(".card.active");
                 $(".card.active").removeClass("active");
                 $(card_below).addClass("active");
                 scrollToActiveCard();
@@ -402,14 +428,30 @@
             var activeCard = $(".card.active"); 
             var parentID = $(activeCard).attr("id")
             var branch = $(activeCard).parents(".branch").next(".branch");
+
+            var prevCardParentId = $(prev_card).attr("data-parent");
+            var activeCardId = $(activeCard).attr("id");
+            var isChild = (prevCardParentId == activeCardId);
+
+            if(isChild){
+                    var card_to_select = prev_card;
+                    prev_card = $(".card.active");
+                    $(activeCard).removeClass("active");
+                    $(card_to_select).addClass("active");
+                    scrollToActiveCard();                
+                    return;
+            }
+
             if(branch.length > 0){
                 var firstCard = $(branch).find(".card").first(); 
                 var card = $(branch).find(".card[data-parent='"+parentID+"']").first();
                 if(card.length > 0){
+                    prev_card = $(".card.active");
                     $(activeCard).removeClass("active");
                     $(card).addClass("active");
                     scrollToActiveCard();
                 }else if(firstCard.length > 0){
+                    prev_card = $(".card.active");
                     $(activeCard).removeClass("active");
                     $(firstCard).addClass("active");
                     scrollToActiveCard();                    
@@ -425,6 +467,7 @@
             var branch = $(activeCard).parents(".branch").next(".branch");
             if(parentID){
                 var card = $("#"+parentID);
+                prev_card = $(".card.active");
                 $(activeCard).removeClass("active");
                 $(card).addClass("active");
                 scrollToActiveCard();
@@ -531,7 +574,8 @@
                             "top":top,
                             "left":left
                         });
-                        sys_state = "filePicker"    
+                        sys_state = "filePicker";
+                        localStorage.setItem("sys_state",sys_state);    
                         $("#filePicker").focus();                
                     })
                 return false;              
@@ -637,7 +681,8 @@
             });
             db.meta.put({
                 "name":"activeDocId",
-                "value":doc["id"]
+                "value":doc["id"],
+                lastModified:moment().toISOString()
             }).then(function(){
                 //console.log("Meta updated!");
             })               
@@ -730,11 +775,7 @@
         if(!file_template){
             var source   = $("#file_template").html();
             file_template = Handlebars.compile(source);
-        }                       
-        db.version(dbVersion).stores({
-            docs: 'id,name,cards,activeCardId,lastModified',
-            meta: 'name,value'
-        });                              
+        }                                                  
         registerHandlers();     
         db.meta.get("activeDocId")
         .then(function (metaActiveDocId) {
