@@ -1,0 +1,136 @@
+﻿
+            <div class="tree">
+                <div class="tree_padding"></div>
+                <div class="branch">
+                    <div class="branch_padding"></div>
+                        <div class="card">
+                                <div class="view"><h1>Welcome to Google's Search Engine Optimization Starter Guide</h1></div>
+                                <textarea class="edit sys_hide" value="# Welcome to Google's Search Engine Optimization Starter Guide                                " style="height: 120px; overflow: hidden;">                                </textarea>                            
+                        </div>
+                <div class="card" data-parent="" id="44da0714-a057-4ceb-8411-826e385e3b67">
+                        <div class="view"><h2>Introduction</h2></div>
+                        <textarea class="edit sys_hide" value="## Introduction                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>
+                <div class="card" data-parent="" id="955d891b-cb03-4cd0-9de3-8d12372b025a">
+                        <div class="view"><h2>SEO Basics</h2></div>
+                        <textarea class="edit sys_hide" value="## SEO Basics                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>
+                <div class="card" data-parent="" id="d892dcc8-90e1-408c-830a-8b59cd445622">
+                        <div class="view"><h2>Improving Site Structure</h2></div>
+                        <textarea class="edit sys_hide" value="## Improving Site Structure                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>
+                <div class="card" data-parent="" id="6b869cbc-7fa0-4e4a-9d4a-7d0a4992bcb0">
+                        <div class="view"><h2>Optimizing Content</h2></div>
+                        <textarea class="edit sys_hide" value="## Optimizing Content                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>
+                
+                            
+        <div class="card" data-parent="" id="dd2d6b08-1785-442b-83ac-a298d34c2558">
+                        <div class="view"><h2>Dealing with Crawlers</h2></div>
+                        <textarea class="edit sys_hide" value="## Dealing with Crawlers                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>
+                <div class="card" data-parent="" id="1a4abc59-ab22-4bfa-bff7-38530c50bfc7">
+                        <div class="view"><h2>SEO for Mobile Phones</h2></div>
+                        <textarea class="edit sys_hide" value="## SEO for Mobile Phones                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>
+                <div class="card active" data-parent="" id="df84cd50-6da6-4a02-be87-dd7ea39a6d0c">
+                        <div class="view"><h2>Promotions and Analysis</h2></div>
+                        <textarea class="edit sys_hide" value="## Promotions and Analysis                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>            
+                    
+                    
+                    
+                    
+                    
+                    
+        
+                
+                
+                
+                            
+                    
+                    
+                    
+        
+                    <div class="branch_padding"></div>
+                </div><div class="branch">
+                    <div class="branch_padding"></div><div class="card" data-parent="44da0714-a057-4ceb-8411-826e385e3b67" id="f18e2f00-727c-4367-8812-e87513ecccfc">
+                        <div class="view"><p>This document first began as an effort to help teams within Google,
+but we thought it'd be just as useful to webmasters that are new to
+the topic of search engine optimization and wish to improve their
+sites' interaction with both users and search engines. Although this
+guide won't tell you any secrets that'll automatically rank your site
+first for queries in Google (sorry!), following the best practices
+outlined below will make it easier for search engines to crawl, index
+and understand your content.</p></div>
+                        <textarea class="edit sys_hide" value="This document first began as an effort to help teams within Google,
+but we thought it'd be just as useful to webmasters that are new to
+the topic of search engine optimization and wish to improve their
+sites' interaction with both users and search engines. Although this
+guide won't tell you any secrets that'll automatically rank your site
+first for queries in Google (sorry!), following the best practices
+outlined below will make it easier for search engines to crawl, index
+and understand your content.                                                " style="height: 269px; overflow: hidden;">                        </textarea>
+                </div><div class="card" data-parent="44da0714-a057-4ceb-8411-826e385e3b67" id="2d7ce078-5f33-4a8e-9303-95e709f830d5">
+                        <div class="view"><p>Search engine optimization is often about making small modifications
+to parts of your website. When viewed individually, these changes
+might seem like incremental improvements, but when combined with
+other optimizations, they could have a noticeable impact on your
+site's user experience and performance in organic search results.
+You're likely already familiar with many of the topics in this guide,
+because they're essential ingredients for any web page, but you may
+not be making the most out of them.</p></div>
+                        <textarea class="edit sys_hide" value="Search engine optimization is often about making small modifications
+to parts of your website. When viewed individually, these changes
+might seem like incremental improvements, but when combined with
+other optimizations, they could have a noticeable impact on your
+site's user experience and performance in organic search results.
+You're likely already familiar with many of the topics in this guide,
+because they're essential ingredients for any web page, but you may
+not be making the most out of them.                                                " style="height: 269px; overflow: hidden;">                        </textarea>
+                </div><div class="card" data-parent="44da0714-a057-4ceb-8411-826e385e3b67" id="ad5b6281-c1ef-4ffb-a1f4-7e99a2be7eb0">
+                        <div class="view"><p>Even though this guide's title contains the words "search engine",
+we'd like to say that you should base your optimization decisions first
+and foremost on what's best for the visitors of your site. They're the
+main consumers of your content and are using search engines to find
+your work. Focusing too hard on specific tweaks to gain ranking in the
+organic results of search engines may not deliver the desired results.
+Search engine optimization is about putting your site's best foot
+forward when it comes to visibility in search engines, but your
+ultimate consumers are your users, not search engines.</p></div>
+                        <textarea class="edit sys_hide" value="Even though this guide's title contains the words &quot;search engine&quot;,
+we'd like to say that you should base your optimization decisions first
+and foremost on what's best for the visitors of your site. They're the
+main consumers of your content and are using search engines to find
+your work. Focusing too hard on specific tweaks to gain ranking in the
+organic results of search engines may not deliver the desired results.
+Search engine optimization is about putting your site's best foot
+forward when it comes to visibility in search engines, but your
+ultimate consumers are your users, not search engines.                                                " style="height: 299px; overflow: hidden;">                        </textarea>
+                </div><div class="card" data-parent="44da0714-a057-4ceb-8411-826e385e3b67" id="b99e7f71-3f07-4225-9b7e-fe9e48f1e180">
+                        <div class="view"><p>Your site may be smaller or larger than our example site and offer
+vastly different content, but the optimization topics we discuss below
+should apply to sites of all sizes and types. We hope our guide gives
+you some fresh ideas on how to improve your website, and we'd love
+to hear your questions, feedback, and success stories in the Google
+Webmaster Help Forum.</p></div>
+                        <textarea class="edit sys_hide" value="Your site may be smaller or larger than our example site and offer
+vastly different content, but the optimization topics we discuss below
+should apply to sites of all sizes and types. We hope our guide gives
+you some fresh ideas on how to improve your website, and we'd love
+to hear your questions, feedback, and success stories in the Google
+Webmaster Help Forum.                                                " style="height: 209px; overflow: hidden;">                        </textarea>
+                </div>
+                    <div class="card" data-parent="955d891b-cb03-4cd0-9de3-8d12372b025a" id="08701fc3-7797-4d9f-b9ff-83420c1c5f8f">
+                        <div class="view"><h3>Create unique, accurate page titles</h3></div>
+                        <textarea class="edit sys_hide" value="### Create unique, accurate page titles                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>
+                <div class="card" data-parent="955d891b-cb03-4cd0-9de3-8d12372b025a" id="6a72b08f-a893-45d4-b58f-a832e59578eb">
+                        <div class="view"><h3>Make use of the "description" meta tag</h3></div>
+                        <textarea class="edit sys_hide" value="### Make use of the &quot;description&quot; meta tag                        " style="height: 120px; overflow: hidden;">                        </textarea>
+                </div>            
+        <div class="branch_padding"></div>
+                </div>
+                <div class="tree_padding"></div>
+            </div>
+        
