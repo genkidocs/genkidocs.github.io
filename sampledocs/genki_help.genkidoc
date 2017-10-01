@@ -1,0 +1,412 @@
+﻿<div class="tree" data-name="Genki Help" id="f47d0caf-cd52-4269-85e4-286ec4277e43">
+                <div class="tree_padding"></div>
+                <div class="branch">
+                    <div class="branch_padding"></div>
+                <div class="card active highlight" data-parent="" data-ancestors="" id="5b80fd75-f140-4d93-a207-8004f0f7cb4e">
+                        <div class="view">
+                            <h1>Welcome to this sample genki doc</h1>
+<h3>(which also dabs as a tutorial)</h3>
+<p>A genki doc is a collection of cards written using markdown arranged in a tree like structure… you can see it here</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# Welcome to this sample genki doc
+
+### (which also dabs as a tutorial) 
+
+A genki doc is a collection of cards written using markdown arranged in a tree like structure.. you can see it here                                "># Welcome to this sample genki doc
+
+### (which also dabs as a tutorial) 
+
+A genki doc is a collection of cards written using markdown arranged in a tree like structure.. you can see it here                                </textarea>
+                </div>            
+        
+                    <div class="branch_padding"></div>
+                </div><div class="branch">
+                    <div class="branch_padding"></div>
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="51334754-c73e-431e-9138-f1ab635221b7">
+                        <div class="view">
+                            <h1>What is Genki</h1>
+<p>Genki is a tree based markdown editor</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# What is Genki
+
+Genki is a tree based markdown editor"># What is Genki
+
+Genki is a tree based markdown editor</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="c277ed60-2046-407b-9acb-c46084adb11a">
+                        <div class="view">
+                            <h1>What can I use Genki for?</h1>
+<ul>
+<li>Writing:
+<ul>
+<li>your book or novel.</li>
+<li>your screenplay.</li>
+<li>your thesis or research paper.</li>
+<li>software specs.</li>
+</ul>
+</li>
+<li>Organizing:
+<ul>
+<li>your projects.</li>
+<li>personal todos.</li>
+<li>your development workflow.</li>
+<li>your ideas.</li>
+<li>your study notes.</li>
+</ul>
+</li>
+</ul>
+                        </div>
+                        <textarea class="edit sys_hide" value="# What can I use Genki for?
+- Writing:
+  - your book or novel.
+  - your screenplay.
+  -   your thesis or research paper.
+  - software specs.
+- Organizing:
+  - your projects.
+  - personal todos.
+  - your development workflow.
+  - your ideas.
+  - your study notes.                                                "># What can I use Genki for?
+- Writing:
+  - your book or novel.
+  - your screenplay.
+  -   your thesis or research paper.
+  - software specs.
+- Organizing:
+  - your projects.
+  - personal todos.
+  - your development workflow.
+  - your ideas.
+  - your study notes.                                                </textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="5c7af96c-2758-4de0-b5c6-fe1bc76c5926">
+                        <div class="view">
+                            <h1>How do I use Genki?</h1>
+<p>The basics:</p>
+<ul>
+<li>Ctrl+Enter to edit and save a card.</li>
+<li>Arrows to move around</li>
+<li>Del to delete</li>
+</ul>
+                        </div>
+                        <textarea class="edit sys_hide" value="# How do I use Genki?
+
+The basics:
+- Ctrl+Enter to edit and save a card.
+- Arrows to move around
+- Del to delete                                                "># How do I use Genki?
+
+The basics:
+- Ctrl+Enter to edit and save a card.
+- Arrows to move around
+- Del to delete                                                </textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="eb7470e8-477b-4faa-8d93-a29256342e23">
+                        <div class="view">
+                            <h1>How much does it cost?</h1>
+<p>The online Genki editor distributed under github is and will always be free.</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# How much does it cost?
+
+The online Genki editor distributed under github is and will always be free."># How much does it cost?
+
+The online Genki editor distributed under github is and will always be free.</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="d3bc2517-1889-4951-9f0a-cec7241c4550">
+                        <div class="view">
+                            <h1>So how do you plan on making money?</h1>
+<p>Genki has originally been designed as a <strong>free</strong> alternative to <a target="_blank" href="https://gingkoapp.com/app">Gingko</a><a></a>.</p>
+<p>It is intended to be used as tool for research / thesis writing and organisation.</p>
+<p>So no plans have been made… yet</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# So how do you plan on making money?
+
+Genki has originally been designed as a **free** alternative to <a target=&quot;_blank&quot; href=&quot;https://gingkoapp.com/app&quot; >Gingko<a></a>. 
+
+It is intended to be used as tool for research / thesis writing and organisation.
+
+So no plans have been made... yet"># So how do you plan on making money?
+
+Genki has originally been designed as a **free** alternative to &lt;a target="_blank" href="https://gingkoapp.com/app" &gt;Gingko&lt;a&gt;&lt;/a&gt;. 
+
+It is intended to be used as tool for research / thesis writing and organisation.
+
+So no plans have been made... yet</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5b80fd75-f140-4d93-a207-8004f0f7cb4e" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e" id="4392beab-8461-4087-895d-47f0eb59ae03">
+                        <div class="view">
+                            <h1>Where can I send feedback?</h1>
+<p>You can send your feed back on one of these channels</p>
+<ul>
+<li>Twitter <a target="_blank" href="https://twitter.com/genkidocs">@genkidocs</a></li>
+<li>Email <a target="_blank" href="mailto:genkidocs@gmail.com">genkidocs@gmail.com</a></li>
+</ul>
+                        </div>
+                        <textarea class="edit sys_hide" value="# Where can I send feedback?
+
+You can send your feed back on one of these channels
+
+- Twitter <a target=&quot;_blank&quot; href=&quot;https://twitter.com/genkidocs&quot; >@genkidocs</a>
+- Email <a target=&quot;_blank&quot; href=&quot;mailto:genkidocs@gmail.com&quot; >genkidocs@gmail.com</a>"># Where can I send feedback?
+
+You can send your feed back on one of these channels
+
+- Twitter &lt;a target="_blank" href="https://twitter.com/genkidocs" &gt;@genkidocs&lt;/a&gt;
+- Email &lt;a target="_blank" href="mailto:genkidocs@gmail.com" &gt;genkidocs@gmail.com&lt;/a&gt;</textarea>
+                </div>            
+        
+                    <div class="branch_padding"></div>
+                </div><div class="branch">
+                    <div class="branch_padding"></div>
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="c4f4fb80-4f10-4395-b50f-57d46d4464aa">
+                        <div class="view">
+                            <h1>Step <code>1</code>: <code>alt</code> <code>enter</code> to Edit.</h1>
+<p>Each card should contain a single thought or topic. Usually no more than a paragraph or two.</p>
+<p><code>Try editing this card!</code></p>
+<p>(<code>alt</code> <code>enter</code> again to save.)</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# Step `1`: `alt` `enter` to Edit.
+Each card should contain a single thought or topic. Usually no more than a paragraph or two.
+
+`Try editing this card!`
+
+(`alt` `enter` again to save.)                                                "># Step `1`: `alt` `enter` to Edit.
+Each card should contain a single thought or topic. Usually no more than a paragraph or two.
+
+`Try editing this card!`
+
+(`alt` `enter` again to save.)                                                </textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="5b4df4f8-98a4-41e8-bcdf-7319853ace8e">
+                        <div class="view">
+                            <h1>Step <code>2</code>: Arrows to Move</h1>
+<p>Move around with arrow keys, or by clicking the card you want to focus on.</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# Step `2`: Arrows to Move
+Move around with arrow keys, or by clicking the card you want to focus on.                                                 "># Step `2`: Arrows to Move
+Move around with arrow keys, or by clicking the card you want to focus on.                                                 </textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="8bd260b7-267b-471b-a13c-ad3b5e352b24">
+                        <div class="view">
+                            <h1>Step <code>3</code>: <code>alt</code> <code>backspace</code> to Delete</h1>
+<p>Try deleting the card to the right.</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# Step `3`: `alt` `backspace` to Delete
+Try deleting the card to the right.                                                "># Step `3`: `alt` `backspace` to Delete
+Try deleting the card to the right.                                                </textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="ab21e583-45c9-418e-a93e-bfd703791b80">
+                        <div class="view">
+                            <h1>Step <code>4</code>: <code>alt</code> <code>s</code> to Save the current tree to disc</h1>
+<p>Try saving this tree</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="# Step `4`: `alt` `s` to Save the current tree to disc
+Try saving this tree                                                        "># Step `4`: `alt` `s` to Save the current tree to disc
+Try saving this tree                                                        </textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="32937348-6096-4321-b16b-712c09b14c4c">
+                        <div class="view">
+                            <h1>Step <code>5</code>: <code>alt</code> <code>l</code> to load a doc from your computer</h1>
+<p>Try downloading then loading these documents</p>
+<ul>
+<li>Document 1</li>
+<li>Document 2</li>
+<li>Document 3</li>
+</ul>
+                        </div>
+                        <textarea class="edit sys_hide" value="# Step `5`: `alt` `l` to load a doc from your computer
+Try downloading then loading these documents
+- Document 1
+- Document 2
+- Document 3                                                                        "># Step `5`: `alt` `l` to load a doc from your computer
+Try downloading then loading these documents
+- Document 1
+- Document 2
+- Document 3                                                                        </textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="5c7af96c-2758-4de0-b5c6-fe1bc76c5926" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926" id="3dbaed8f-06b6-49b0-aeef-14389fcd3bbe">
+                        <div class="view">
+                            <h2>Shortcut Reference</h2>
+                        </div>
+                        <textarea class="edit sys_hide" value="## Shortcut Reference">## Shortcut Reference</textarea>
+                </div>            
+        
+                    <div class="branch_padding"></div>
+                </div><div class="branch">
+                    <div class="branch_padding"></div>
+                <div class="card highlight" data-parent="8bd260b7-267b-471b-a13c-ad3b5e352b24" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_8bd260b7-267b-471b-a13c-ad3b5e352b24" id="022252e5-538e-4540-a584-5250dc820a44">
+                        <div class="view">
+                            <h2>Delete me</h2>
+                        </div>
+                        <textarea class="edit sys_hide" value="## Delete me">## Delete me</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3dbaed8f-06b6-49b0-aeef-14389fcd3bbe" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe" id="3892baea-7489-4c22-8462-37968a51b70a">
+                        <div class="view">
+                            <h2><code>1</code> View shortcuts</h2>
+<p>Shortcuts that are activated when you aren’t editing a card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `1` View shortcuts
+
+Shortcuts that are activated when you aren't editing a card">## `1` View shortcuts
+
+Shortcuts that are activated when you aren't editing a card</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3dbaed8f-06b6-49b0-aeef-14389fcd3bbe" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe" id="88d481a8-057e-4f2e-86a9-5d43e555f83b">
+                        <div class="view">
+                            <h2><code>2</code> Edit shortcuts</h2>
+<p>Shortcuts that are activated when you are editing a card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `2` Edit shortcuts
+Shortcuts that are activated when you are editing a card">## `2` Edit shortcuts
+Shortcuts that are activated when you are editing a card</textarea>
+                </div>            
+        
+                    <div class="branch_padding"></div>
+                </div><div class="branch">
+                    <div class="branch_padding"></div>
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="459ebd2e-7d84-424c-995b-739d336c169c">
+                        <div class="view">
+                            <h2>[ <code>🡐</code> , <code>🡒</code> , <code>🡑</code> , <code>🡓</code> ]</h2>
+<p>Move around the document</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## [ `🡐` , `🡒` , `🡑` , `🡓` ]
+Move around the document">## [ `🡐` , `🡒` , `🡑` , `🡓` ]
+Move around the document</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="5754f0cd-87cf-43ce-b7e5-4f713dc426cc">
+                        <div class="view">
+                            <h2><code>alt</code> <code>🡑</code></h2>
+<p>Add a new card above selected card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `🡑`
+Add a new card above selected card">## `alt` `🡑`
+Add a new card above selected card</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="22aec281-d8e1-4f6a-ba7c-f15e4dc9477d">
+                        <div class="view">
+                            <h2><code>alt</code> <code>🡓</code></h2>
+<p>Add a new card below selected card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `🡓`
+Add a new card below selected card">## `alt` `🡓`
+Add a new card below selected card</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="ec7f6d5a-9fd6-47a0-ab00-85ad5fcf838b">
+                        <div class="view">
+                            <h2><code>alt</code> <code>🡒</code></h2>
+<p>Add a new child card to the ( right of ) selected card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `🡒`
+Add a new child card to the ( right of ) selected card">## `alt` `🡒`
+Add a new child card to the ( right of ) selected card</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="e993f4fc-32ec-4924-bddf-776783cbb7f5">
+                        <div class="view">
+                            <h2><code>alt</code> <code>shift</code> <code>🡑</code></h2>
+<p>Move selected card up</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `shift` `🡑`
+Move selected card up">## `alt` `shift` `🡑`
+Move selected card up</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="054db41a-92ba-4efc-896a-841f917cd77c">
+                        <div class="view">
+                            <h2><code>alt</code> <code>shift</code> <code>🡓</code></h2>
+<p>Move selected card down</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `shift` `🡓`
+Move selected card down">## `alt` `shift` `🡓`
+Move selected card down</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="72effa4f-7418-49c6-ad88-06f4a067e5ef">
+                        <div class="view">
+                            <h2><code>alt</code> <code>enter</code></h2>
+<p>Edit a card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `enter`
+Edit a card">## `alt` `enter`
+Edit a card</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="bff64ad9-154b-42a0-9673-2e99ee62b64e">
+                        <div class="view">
+                            <h2><code>alt</code> <code>backspace</code></h2>
+<p>Delete a card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `backspace`
+Delete a card">## `alt` `backspace`
+Delete a card</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="14dad212-f0d5-4591-ab73-4eef821950ed">
+                        <div class="view">
+                            <h2><code>alt</code> <code>s</code></h2>
+<p>Save a genki doc to your computer</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `s`
+Save a genki doc to your computer">## `alt` `s`
+Save a genki doc to your computer</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="c4eb5837-01f0-495a-8d84-449fd77d43a4">
+                        <div class="view">
+                            <h2><code>alt</code> <code>l</code></h2>
+<p>Load a genki doc from your computer</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `l`
+Load a genki doc from your computer">## `alt` `l`
+Load a genki doc from your computer</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="b277fcb9-5b11-4fc9-b822-a7cd7f11c594">
+                        <div class="view">
+                            <h2><code>alt</code> <code>n</code></h2>
+<p>Create a new document</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `n`
+Create a new document">## `alt` `n`
+Create a new document</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="3892baea-7489-4c22-8462-37968a51b70a" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_3892baea-7489-4c22-8462-37968a51b70a" id="1ff6f0e8-dee7-4371-b6ac-c953d238e620">
+                        <div class="view">
+                            <h2><code>alt</code> <code>T</code></h2>
+<p>Open/Close the file manager</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `T`
+Open/Close the file manager">## `alt` `T`
+Open/Close the file manager</textarea>
+                </div>            
+        
+                <div class="card highlight" data-parent="88d481a8-057e-4f2e-86a9-5d43e555f83b" data-ancestors="_5b80fd75-f140-4d93-a207-8004f0f7cb4e_5c7af96c-2758-4de0-b5c6-fe1bc76c5926_3dbaed8f-06b6-49b0-aeef-14389fcd3bbe_88d481a8-057e-4f2e-86a9-5d43e555f83b" id="18957f18-234d-498c-afac-5901aca1fe2f">
+                        <div class="view">
+                            <h2><code>alt</code> <code>enter</code></h2>
+<p>Save an edited card</p>
+                        </div>
+                        <textarea class="edit sys_hide" value="## `alt` `enter`
+Save an edited card">## `alt` `enter`
+Save an edited card</textarea>
+                </div>            
+        
+                    <div class="branch_padding"></div>
+                </div><div class="tree_padding"></div>
+            </div>
